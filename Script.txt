@@ -1,18 +1,17 @@
 Humanitarian:
-Food and Medical supplies 🡺 Retake Civilian Town 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak
-
-Eastwind:
-Investigate dead squad          🡺 Return for Briefing 🡺 Capture Eastwind Device
-Investigate downed Blackfish    🡹                     🡺 Assasinate Miller
-Investigate sunken ship         🡹
-                                🡹
-Kill:                           🡹
-Kill enemy combatants 🡺        🡹
-Gather Intel          🡹
-Kill Artillery        🡹
+    Collect Food and Medical supplies 🡺 Dropoff Food and Medical supplies 🡺 Retake Village 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡻
+                                                                                                                                                          🡻
+Eastwind:                                                                                                                                                 🡻
+    Investigate dead squad       🡻                       🡺 Return to get CBRN and Briefing 🡺 Capture Eastwind Device 🡺 Return Eastwind Device         🡺 Pettka drives off with Eastwind
+    Investigate downed Blackfish 🡻                       🡹                                 🡺 Assasinate Miller
+    Investigate sunken submarine 🡻                       🡹
+                                 🡻                       🡹
+                                 🡻 Kill:                 🡹
+                                 🡺 Kill enemy combatants 🡹
+                                 🡺 Gather Intel          🡹
 
 Optional:
-Destroy Fuel Depot
+    Kill Artillery
 
 
 1st Briefing:
@@ -28,6 +27,10 @@ Destroy Fuel Depot
 		• Front line markings only accurate for CSAT
             • Past front line expect CSAT and IND
             • Within should only be IND
+        • Virus Outbreak
+            • Orange Markings are infected areas
+            • Do not enter without consulting with me
+            • Do not enter without CBRN Suits
 
     Humanitarian:
         • Collect Food and Medical
@@ -48,13 +51,11 @@ Destroy Fuel Depot
         • Kill Artillery
              • High Priority
 
-    Optional Tasks:
-        • Destroy enemy fuel depot
-        • No more tracked reinforcments
-
 	Support:
         • Artillery Strikes possible
         • Use only if no other way
         • If worst comes to worst we might be able to free up a V-44X
 
 	• Any questions?
+
+2nd Briefing:
