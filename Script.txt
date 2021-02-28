@@ -1,0 +1,60 @@
+Humanitarian:
+Food and Medical supplies 🡺 Retake Civilian Town 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak
+
+Eastwind:
+Investigate dead squad          🡺 Return for Briefing 🡺 Capture Eastwind Device
+Investigate downed Blackfish    🡹                     🡺 Assasinate Miller
+Investigate sunken ship         🡹
+                                🡹
+Kill:                           🡹
+Kill enemy combatants 🡺        🡹
+Gather Intel          🡹
+Kill Artillery        🡹
+
+Optional:
+Destroy Fuel Depot
+
+
+1st Briefing:
+	General:
+		• Since your last deployment a week ago tensions rose
+			• More CSAT activity
+			• Tried evacuate all civilians
+				• Still high civilian activity
+		• Enemy Types to expect:
+			• Mostly infantry
+            • Some Technicals
+			• Some mechanized infantry
+		• Front line markings only accurate for CSAT
+            • Past front line expect CSAT and IND
+            • Within should only be IND
+
+    Humanitarian:
+        • Collect Food and Medical
+        • Use HEMTTs
+        • Bring to IDAP Headquarters
+        • IDAP Leadership will give further information
+
+    Eastwind:
+        • Lost contact to squad
+        • Lost contact to Blackfish
+        • Lost contact to ship
+        • Investigate their deaths
+        • Relay any information to me
+
+    Kill:
+        • Enemy Units
+            • Should have intel on them
+        • Kill Artillery
+             • High Priority
+
+    Optional Tasks:
+        • Destroy enemy fuel depot
+        • No more tracked reinforcments
+
+	Support:
+        • Artillery Strikes possible
+        • Use only if no other way
+        • If worst comes to worst we might be able to free up a V-44X
+
+	• Any questions?
