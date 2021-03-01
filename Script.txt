@@ -33,15 +33,16 @@ Optional:
             • Do not enter without CBRN Suits
 
     Humanitarian:
-        • Collect Food and Medical
-        • Use HEMTTs
-        • Bring to IDAP Headquarters
-        • IDAP Leadership will give further information
+        • Secure Food and Medical
+        • Dropoff HEMTTs
+        • IDAP personell will collect
+        • Afterwards IDAP command will be in touch
 
     Eastwind:
         • Lost contact to squad
         • Lost contact to Blackfish
-        • Lost contact to ship
+        • Lost contact to submarine
+            • Scuba gear might be necessary
         • Investigate their deaths
         • Relay any information to me
 
@@ -55,6 +56,7 @@ Optional:
         • Artillery Strikes possible
         • Use only if no other way
         • If worst comes to worst we might be able to free up a V-44X
+        • Supply drop
 
 	• Any questions?
 
