@@ -13,3 +13,4 @@ if (hasInterface) then {
 };
 AD_fnc_airdropIDAP = compile preprocessFileLineNumbers "functions\airdrop.sqf";
 AD_fnc_supplyDrop = compile preprocessFileLineNumbers "functions\supplydrop.sqf";
+AI_fnc_addAction = compile preprocessFileLineNumbers "functions\addaction.sqf";
