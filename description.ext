@@ -1,0 +1,24 @@
+briefingName = "Operation Greywater Part 2";
+onLoadMissionTime = 1;
+
+author				= "Nope.X";
+onLoadName			= "Operation Greywater";
+onLoadMission		= "You're playing as a group of contractors trying to sabotage the enemy. The island of Altis is currently held by OPFOR and INDFOR";
+loadScreen			= "media\loading.paa";
+overviewPicture		= "media\loading.paa";
+overviewText		= "You're playing as a group of contractors trying to sabotage the enemy. The island of Altis is currently held by OPFOR and INDFOR";
+
+class Header
+{
+	gameType =  Coop;	// Game type
+	minPlayers =  1;	// minimum number of players the mission supports
+	maxPlayers = 15;	// maximum number of players the mission supports
+};
+
+//Respawn Settings
+respawn = 3;
+respawnDelay = 20;
+respawnDialog = 1;
+respawnOnStart = 0;
+respawnTemplates[] = { "MenuPosition" };
+respawnTemplatesVirtual[] = {}; 
