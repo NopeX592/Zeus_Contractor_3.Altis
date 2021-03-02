@@ -15,7 +15,6 @@ Example:
 [
 	"CargoNet_01_box_F",
 	position player,
-	//dropsite,
 	125,
 	750,
 	1000,
@@ -28,7 +27,6 @@ __________________________________________________________________*/
 params [
 	["_object", "C_IDAP_CargoNet_01_supplies_F", [""]],
 	["_centre", [0, 0, 0], ["", objNull, taskNull, locationNull, [], grpNull], [3]],
-	//["_drop_site", dropsite, []],
 	["_drop_distance", 125, [0]],
 	["_height", 300, [0]],
 	["_distance", 750, [0]],
@@ -40,8 +38,8 @@ params [
 //Create Flyby
 _direction_e = _direction_s + 180;
 
-_flyby_start = player getRelPos [_distance, _direction_s];
-_flyby_end = player getRelPos [_distance, _direction_e];
+_flyby_start = dropsite_logic getRelPos [_distance, _direction_s];
+_flyby_end = dropsite_logic getRelPos [_distance, _direction_e];
 
 [_flyby_start, _flyby_end, _height, "NORMAL", "B_T_VTOL_01_vehicle_F", west] call BIS_fnc_ambientFlyby;
 
@@ -60,79 +58,92 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	objNull
 };
 
-//Repeat
-for "_i" from 1 to _repetitions step 1 do {
+//Delay drops
+[_object, _centre, _drop_distance, _height, _distance, _direction_s, _repetitions, _attachTo, _direction_e] spawn {
 
-	//Space out drops
-	_centre_distance = player getRelPos [_drop_distance, _direction_e];
+	params ["_object", "_centre", "_drop_distance", "_height", "_distance", "_direction_s", "_repetitions", "_attachTo", "_direction_e"];
 
-	private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
-	private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
+	sleep 9.75;
 
-	_para setDir getDir _obj;
-	_para setPos getPos _obj;
-	_obj lock false;
-	_obj attachTo [_para, _attachTo];
+	//Repeat
+	for "_i" from 1 to _repetitions step 1 do {
 
-	//Attach Smoke
-	_smoke = "Blue";
-	_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-	_smoke attachTo [_obj, [0,0,0]];
+		//Space out drops
+		_centre_distance = dropsite_logic getRelPos [_drop_distance, _direction_e];
 
-	[_obj, _para] spawn {
-		params ["_obj","_para"];
-			
-		waitUntil {
-			sleep 0.01;
-			((position _obj) select 2) < 2 
-			|| 
-			isNull _para 
-			|| 
-			(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
-		};
-			
-		_para disableCollisionWith _obj;
-		_obj setVectorUp [0,0,1];
-		_obj setVelocity [0,0,0];
-		detach _obj;
-			
-		if (!isNull _para) then {deleteVehicle _para};
+		private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
+		private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
 
-		(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
+		_para setDir getDir _obj;
+		_para setPos getPos _obj;
+		_obj lock false;
+		_obj attachTo [_para, _attachTo];
 
 		//Attach Smoke
 		_smoke = "Blue";
 		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
 		_smoke attachTo [_obj, [0,0,0]];
+
+		[_obj, _para] spawn {
+			params ["_obj","_para"];
+				
+			waitUntil {
+				sleep 0.01;
+				((position _obj) select 2) < 2 
+				|| 
+				isNull _para 
+				|| 
+				(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
+			};
+				
+			_para disableCollisionWith _obj;
+			_obj setVectorUp [0,0,1];
+			_obj setVelocity [0,0,0];
+			detach _obj;
+				
+			if (!isNull _para) then {deleteVehicle _para};
+
+			(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
+
+			//Attach Smoke
+			_smoke = "Blue";
+			_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+			_smoke attachTo [_obj, [0,0,0]];
+		};
+		_drop_distance = _drop_distance * 1.5
 	};
-};
+	//Spawn QRF
+	_repetitions = _repetitions - 1;
+	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
+	for "_i" from 1 to _repetitions step 1 do {
+		_randomStarting = selectRandom _qrf_spawns;
+		_randomDelay = selectRandom [30,40,50,60];
+		_randomUnits = selectRandom [4,5,6,7];
 
-//Spawn QRF
-_repetitions = _repetitions - 1;
-for "_i" from 1 to _repetitions step 1 do {
-	_randomStarting = selectRandom ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
-	_randomDelay = selectRandom [30,40,50,60];
-	_randomUnits = selectRandom [3,4,5,6,7,8];
+		[
+			getMarkerPos _randomStarting,
+			getMarkerPos "qrf_target_1",
+			_randomUnits,
+			_randomDelay,
+			independent
+		] call SU_fnc_spawnOPFOR;
 
-	[
-		getMarkerPos _randomStarting,
-		getMarkerPos "qrf_target_1",
-		_randomUnits,
-		_randomDelay,
-		EAST
-	] call SU_fnc_spawnGUER;
-};
+		_newArray = [];
+		{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
+		_qrf_spawns = _newArray;
+	};
 
-//Spawn IDAP
-_repetitions = _repetitions - 2;
-for "_i" from 1 to _repetitions step 1 do {
-	[
-		getMarkerPos idap_spawn,
-		getMarkerPos "qrf_target_1",
-		4,
-		180,
-		CIVILIAN
-	] call SU_fnc_spawnIDAP;
+	//Spawn IDAP
+	_repetitions = _repetitions - 2;
+	for "_i" from 1 to _repetitions step 1 do {
+		[
+			getMarkerPos "idap_spawn",
+			getMarkerPos "qrf_target_1",
+			2,
+			180,
+			CIVILIAN
+		] call SU_fnc_spawnIDAP;
+	};
 };
 
 _obj

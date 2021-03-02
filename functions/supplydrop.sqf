@@ -18,7 +18,6 @@ Example:
 	750,
 	1000,
 	200,
-	[0,0,-1.2],
 	2,
 	WEST
 ] call AD_fnc_supplyDrop;
@@ -55,60 +54,69 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	objNull
 };
 
-private _obj = createVehicle [_object, _centre vectorAdd [0, 0, _height], [], 0, "NONE"]; 
-private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
+//Delay Drops
+[_object, _centre, _height, _distance, _direction_s, _repetitions, _attachTo, _direction_e] spawn {
 
-_para setDir getDir _obj;
-_para setPos getPos _obj;
-_obj lock false;
-_obj attachTo [_para, _attachTo];
+	params ["_object", "_centre", "_drop_site", "_drop_distance", "_height", "_distance", "_direction_s", "_repetitions", "_attachTo", "_direction_e"];
 
-//Attach Smoke
-_smoke = selectRandom ["Green"];
-_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+	sleep 9.75;
 
-_smoke attachTo [_obj, [0,0,0]];
+	private _obj = createVehicle [_object, _centre vectorAdd [0, 0, _height], [], 0, "NONE"]; 
+	private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
 
-[_obj, _para] spawn {
-	params ["_obj","_para"];
-		
-	waitUntil {
-		sleep 0.01;
-		((position _obj) select 2) < 2 
-		|| 
-		isNull _para 
-		|| 
-		(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
-	};
-		
-	_para disableCollisionWith _obj;
-	_obj setVectorUp [0,0,1];
-	_obj setVelocity [0,0,0];
-	detach _obj;
-		
-	if (!isNull _para) then {deleteVehicle _para};
-
-	(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
+	_para setDir getDir _obj;
+	_para setPos getPos _obj;
+	_obj lock false;
+	_obj attachTo [_para, _attachTo];
 
 	//Attach Smoke
-	_smoke = selectRandom ["Blue"];
+	_smoke = selectRandom ["Green"];
 	_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+
 	_smoke attachTo [_obj, [0,0,0]];
-};
 
-//Spawn QRF
-for "_i" from 1 to _repetitions step 1 do {
-	_randomRotation = selectRandom [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345,360];
-	_randomDelay = selectRandom [30,40,50,60];
-	_randomUnits = selectRandom [3,4,5,6,7,8,9,10];
+	[_obj, _para] spawn {
+		params ["_obj","_para"];
+			
+		waitUntil {
+			sleep 0.01;
+			((position _obj) select 2) < 2 
+			|| 
+			isNull _para 
+			|| 
+			(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
+		};
+			
+		_para disableCollisionWith _obj;
+		_obj setVectorUp [0,0,1];
+		_obj setVelocity [0,0,0];
+		detach _obj;
+			
+		if (!isNull _para) then {deleteVehicle _para};
 
-	[
-		player getRelPos [1000, _randomRotation],
-		position player,
-		_randomUnits,
-		_randomDelay,
-		EAST
-	] call SU_fnc_spawnGUER;
+		(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
+
+		//Attach Smoke
+		_smoke = selectRandom ["Blue"];
+		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+		_smoke attachTo [_obj, [0,0,0]];
+	};
+
+	//Spawn QRF
+	for "_i" from 1 to _repetitions step 1 do {
+		_randomRotation = selectRandom [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345,360];
+		_randomDelay = selectRandom [30,40,50,60];
+		_randomUnits = selectRandom [5,6,7,8,9,10];
+		_randomSide = selectRandom [EAST, independent];
+
+		[
+			player getRelPos [1000, _randomRotation],
+			position player,
+			_randomUnits,
+			_randomDelay,
+			_randomSide
+		] call SU_fnc_spawnOPFOR;
+	};
 };
 
 _obj 
