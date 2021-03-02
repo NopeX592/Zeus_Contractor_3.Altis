@@ -48,12 +48,17 @@ Humanitarian:<br/>
     • Dropoff HEMTTs<br/>
     • IDAP personell will collect<br/>
     • Afterwards IDAP command will be in touch<br/>
+    • Enemies will let off once IDAP arrives<br/>
 <br/>
 Eastwind:<br/>
     • Lost contact to squad<br/>
         • Investigate their deaths<br/>
         • Search them for Intel<br/>
     • Lost contact to Blackfish<br/>
+        • Search for Blackbox and upload Datais<br/>
+        • Search for flight log<br/>
+    • Lost contact to Tank<br/>
+        • Investigate Debris<br/>
     • Intel is for my eyes only<br/>
     • Datais transferred automatically<br/>
 <br/>

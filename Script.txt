@@ -4,7 +4,7 @@ Humanitarian:
 Eastwind:                                                                                                                                                🡻
     Investigate dead squad       🡻                       🡺 Return to get CBRN and Briefing 🡺 Capture Eastwind Device 🡺 Return Eastwind Device        🡺 Pettka drives off with Eastwind
     Investigate downed Blackfish 🡻                       🡹                                 🡺 Assasinate Miller
-                                 🡻                       🡹
+    Investigate destroyed Tank   🡻                       🡹
                                  🡻 Kill:                 🡹
                                  🡺 Kill enemy combatants 🡹
                                  🡺 Gather Intel          🡹
@@ -38,12 +38,17 @@ Optional:
         • Dropoff HEMTTs
         • IDAP personell will collect
         • Afterwards IDAP command will be in touch
+        • Enemies will let off once IDAP arrives
 
     Eastwind:
         • Lost contact to squad
             • Investigate their deaths
             • Search them for Intel
         • Lost contact to Blackfish
+            • Search for Blackbox and upload Datais
+            • Search for flight log
+        • Lost contact to Tank
+            • Investigate Debris
         • Intel is for my eyes only
         • Datais transferred automatically
 
