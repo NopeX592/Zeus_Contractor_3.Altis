@@ -15,3 +15,5 @@ if (hasInterface) then {
 AD_fnc_supplyDrop = compile preprocessFileLineNumbers "functions\supplydrop.sqf";
 AD_fnc_airDrop = compile preprocessFileLineNumbers "functions\airdrop.sqf";
 AI_fnc_addAction = compile preprocessFileLineNumbers "functions\addaction.sqf";
+SU_fnc_spawnCSAT = compile preprocessFileLineNumbers "functions\spawn_qrf_east.sqf";
+SU_fnc_spawnGUER = compile preprocessFileLineNumbers "functions\spawn_qrf_guer.sqf";
