@@ -61,13 +61,14 @@ Kill:<br/>
     • Enemy Units<br/>
         • Should have intel on them<br/>
     • Kill Artillery<br/>
-            • High Priority<br/>
+        • High Priority<br/>
 <br/>
 Support:<br/>
     • Artillery Strikes possible<br/>
-    • Use only if no other way<br/>
+        • Use only if no other way<br/>
     • If worst comes to worst we might be able to free up a V-44X<br/>
     • Supply drop<br/>
+        • If called in IND will most likely respond<br/>
 <br/>"+
 "";
 
