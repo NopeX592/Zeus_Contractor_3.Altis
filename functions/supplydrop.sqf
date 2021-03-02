@@ -106,7 +106,6 @@ for "_i" from 1 to _repetitions step 1 do {
 		player getRelPos [1000, _randomRotation],
 		position player,
 		_randomUnits,
-		1,
 		_randomDelay,
 		EAST
 	] call SU_fnc_spawnGUER;
