@@ -9,7 +9,7 @@ AI_fnc_action_1 = {
 
 AI_fnc_createAction = {
 gatherIntel_1 = intel_Unit_1 addAction ["Give Water","[] call AI_fnc_action_1;",nil,2.5,true,false,"","true",3,false,"",""];
-}
+};
 
 while {_run} do {
 	if (isServer) then {
