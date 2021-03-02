@@ -41,11 +41,11 @@ Optional:
 
     Eastwind:
         • Lost contact to squad
+            • Investigate their deaths
+            • Search them for Intel
         • Lost contact to Blackfish
-        • Lost contact to submarine
-            • Scuba gear might be necessary
-        • Investigate their deaths
-        • Relay any information to me
+        • Intel is for my eyes only
+        • Datais transferred automatically
 
     Kill:
         • Enemy Units

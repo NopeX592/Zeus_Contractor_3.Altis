@@ -1,0 +1,22 @@
+_run = true;
+task_2_1_skip = false;
+publicVariableServer "task_2_1_skip";
+
+task_2_1 = player createSimpleTask ["Investigate Downed Blackfish"];
+	task_2_1 setSimpleTaskDescription ["Investigate the downed you may find it in the estimated area.","Investigate Downed Blackfish",""];
+	task_2_1 setSimpleTaskDestination (getMarkerPos "intel_blackfish");
+	task_2_1 setSimpleTaskType "documents";
+	task_2_1 setTaskState "Created";
+
+_marker_intel = createMarker ["Investigate Downed Blackfish", getMarkerPos "intel_blackfish"];
+	_marker_intel setMarkerShape "ELLIPSE";
+	_marker_intel setMarkerSize [50, 50];
+
+while {_run} do {
+	if (((isNull flight_log) && (sent_data)) || (task_2_1_skip)) then {
+		task_2_1 setTaskState "Succeeded";
+		["TaskSucceeded",["","Investigate Downed Blackfish"]] call BIS_fnc_showNotification;
+		_marker_intel setMarkerSize [0, 0];
+		_run = false;
+	};
+};

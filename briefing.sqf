@@ -51,11 +51,11 @@ Humanitarian:<br/>
 <br/>
 Eastwind:<br/>
     • Lost contact to squad<br/>
+        • Investigate their deaths<br/>
+        • Search them for Intel<br/>
     • Lost contact to Blackfish<br/>
-    • Lost contact to submarine<br/>
-        • Scuba gear might be necessary<br/>
-    • Investigate their deaths<br/>
-    • Relay any information to me<br/>
+    • Intel is for my eyes only<br/>
+    • Datais transferred automatically<br/>
 <br/>
 Kill:<br/>
     • Enemy Units<br/>
