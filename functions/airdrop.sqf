@@ -15,7 +15,7 @@ Example:
 [
 	"CargoNet_01_box_F",
 	position player,
-	dropsite,
+	//dropsite,
 	125,
 	750,
 	1000,
@@ -105,6 +105,23 @@ for "_i" from 1 to _repetitions step 1 do {
 		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
 		_smoke attachTo [_obj, [0,0,0]];
 	};
+};
+
+//Spawn QRF
+_repetitions = _repetitions - 1;
+for "_i" from 1 to _repetitions step 1 do {
+	_randomStarting = selectRandom ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
+	_randomDelay = selectRandom [30,40,50,60];
+	_randomUnits = selectRandom [3,4,5,6,7,8];
+
+	[
+		getMarkerPos _randomStarting,
+		getMarkerPos "qrf_target_1",
+		_randomUnits,
+		1,
+		_randomDelay,
+		EAST
+	] call SU_fnc_spawnGUER;
 };
 
 _obj

@@ -19,6 +19,7 @@ Example:
 	1000,
 	200,
 	[0,0,-1.2],
+	2,
 	WEST
 ] call AD_fnc_supplyDrop;
 __________________________________________________________________*/
@@ -28,6 +29,7 @@ params [
 	["_height", 300, [0]],
 	["_distance", 750, [0]],
 	["_direction_s", 35, [0]],
+	["_repetitions", 4, [0]],
 	["_attachTo", [0, 0, -1.2], [[]], [3]]
 ];
 
@@ -87,11 +89,27 @@ _smoke attachTo [_obj, [0,0,0]];
 	if (!isNull _para) then {deleteVehicle _para};
 
 	(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
-};
-//Attach Smoke
-_smoke = selectRandom ["Blue"];
-_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
 
-_smoke attachTo [_obj, [0,0,0]];
+	//Attach Smoke
+	_smoke = selectRandom ["Blue"];
+	_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+	_smoke attachTo [_obj, [0,0,0]];
+};
+
+//Spawn QRF
+for "_i" from 1 to _repetitions step 1 do {
+	_randomRotation = selectRandom [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345,360];
+	_randomDelay = selectRandom [30,40,50,60];
+	_randomUnits = selectRandom [3,4,5,6,7,8,9,10];
+
+	[
+		player getRelPos [1000, _randomRotation],
+		position player,
+		_randomUnits,
+		1,
+		_randomDelay,
+		EAST
+	] call SU_fnc_spawnGUER;
+};
 
 _obj 
