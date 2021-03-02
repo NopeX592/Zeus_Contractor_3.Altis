@@ -118,10 +118,21 @@ for "_i" from 1 to _repetitions step 1 do {
 		getMarkerPos _randomStarting,
 		getMarkerPos "qrf_target_1",
 		_randomUnits,
-		1,
 		_randomDelay,
 		EAST
 	] call SU_fnc_spawnGUER;
+};
+
+//Spawn IDAP
+_repetitions = _repetitions - 2;
+for "_i" from 1 to _repetitions step 1 do {
+	[
+		getMarkerPos idap_spawn,
+		getMarkerPos "qrf_target_1",
+		4,
+		180,
+		CIVILIAN
+	] call SU_fnc_spawnIDAP;
 };
 
 _obj
