@@ -16,7 +16,6 @@ while {_run} do {
 		
 		//Execute Missions
 		[]execVM "humanitarian\secure_food_medical.sqf";
-//		[]execVM "kill\.sqf";
 //		[]execVM "eastwind\.sqf";
 		[]execVM "optional\destroy_artillery.sqf";
 		
