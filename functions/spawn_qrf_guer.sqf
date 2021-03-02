@@ -26,24 +26,28 @@ waypoint_2_done = false;
 //Create Group
 private _qrf_group = createGroup [_side, false];
 
-//Spawn Officer
+//Spawn Mandatory
 squad_lead = "I_G_Soldier_SL_F" createUnit [_location_start, _qrf_group];
 auto_rifle = "I_G_Soldier_AR_F" createUnit [_location_start, _qrf_group];
 grenadier = "I_G_Soldier_GL_F" createUnit [_location_start, _qrf_group];
 
-//Spawn Riflemen
-_amount = _amount - 3;
+if (_side == EAST) then {
+	//Spawn IND Units
+	_amount = _amount - 3;
 
-for "_i" from 1 to _amount step 1 do {
-rifle_man = "I_G_Soldier_F" createUnit [_location_start, _qrf_group];
-};
+	for "_i" from 1 to _amount step 1 do {
+	rifle_man = "I_G_Soldier_F" createUnit [_location_start, _qrf_group];
+	};
 
-//Spawn Vehicle
-if (_amount <= 6) then {
-	vehicleSpawn = "I_G_Offroad_01_F" createVehicle _location_start;
+	//Spawn Vehicle
+	if (_amount <= 6) then {
+		vehicleSpawn = "I_G_Offroad_01_F" createVehicle _location_start;
+		} else {
+		vehicleSpawn = "I_G_Van_01_transport_F" createVehicle _location_start;
+	};
 	} else {
-	vehicleSpawn = "I_G_Van_01_transport_F" createVehicle _location_start;
-};
+
+	};
 
 //Order Get In
 _wp_getIn = _qrf_group addWaypoint [_location_start, 0];
