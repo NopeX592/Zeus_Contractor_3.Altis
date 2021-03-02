@@ -1,6 +1,5 @@
 []execVM "main_script.sqf";
 []execVM "briefing.sqf";
-[]execVM "post_briefing_init.sqf";
 
 if (hasInterface) then {
 	[] spawn {
@@ -11,6 +10,8 @@ if (hasInterface) then {
 		}];
 	};
 };
-AD_fnc_airdropIDAP = compile preprocessFileLineNumbers "functions\airdrop.sqf";
+
+//Create Functions
 AD_fnc_supplyDrop = compile preprocessFileLineNumbers "functions\supplydrop.sqf";
+AD_fnc_airDrop = compile preprocessFileLineNumbers "functions\airdrop.sqf";
 AI_fnc_addAction = compile preprocessFileLineNumbers "functions\addaction.sqf";

@@ -1,5 +1,5 @@
 Humanitarian:
-    Collect Food and Medical supplies 🡺 Dropoff Food and Medical supplies 🡺 Retake Village 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡻
+    Secure Food and Medical supplies 🡺 Dropoff Food and Medical supplies 🡺 Retake Village 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡻
                                                                                                                                                           🡻
 Eastwind:                                                                                                                                                 🡻
     Investigate dead squad       🡻                       🡺 Return to get CBRN and Briefing 🡺 Capture Eastwind Device 🡺 Return Eastwind Device         🡺 Pettka drives off with Eastwind
@@ -31,9 +31,11 @@ Optional:
             • Orange Markings are infected areas
             • Do not enter without consulting with me
             • Do not enter without CBRN Suits
+        • Relocated to new FOB
+        • Additional assets found at aircraft carrier or FOB Alpha
 
     Humanitarian:
-        • Secure Food and Medical
+        • Secure Food and Medical supplies
         • Dropoff HEMTTs
         • IDAP personell will collect
         • Afterwards IDAP command will be in touch
@@ -54,9 +56,10 @@ Optional:
 
 	Support:
         • Artillery Strikes possible
-        • Use only if no other way
+            • Use only if no other way
         • If worst comes to worst we might be able to free up a V-44X
         • Supply drop
+            • If called in IND will most likely respond
 
 	• Any questions?
 
