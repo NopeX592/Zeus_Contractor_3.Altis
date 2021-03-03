@@ -39,50 +39,18 @@ PB_fnc_action_5 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 	[black_box, intel_gathered_5] remoteExec ["removeAction", 0, true];
 
-	//Loading Bar‎
-	"Uploading Data.\n0%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n5%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n10%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n15%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n20%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n25%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n30%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n35%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n40%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n45%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n50%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n55%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n60%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n65%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n70%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n75%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n80%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n85%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n90%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Uploading Data.\n95%/100%" remoteExec ["hint", 0, true];
-	sleep 9;
-	"Data Upload Succesful.\n100%/100%" remoteExec ["hint", 0, true];
+	/*
+	for "_i" from 5 to 100 step 5 do {
+		[_i] spawn {
+			sleep 9;
+			params ["_i"];
+			hint str format ["Uploading Data.\n %1%/100%",str _i];
+			hintSilent "";
+		};
+	};
+	*/
 
-	sent_data = true;
+	sent_data_blackfish = true;
 	publicVariable "send_data";
 };
 
