@@ -2,7 +2,7 @@ _run = true;
 task_3_3_skip = false;
 publicVariableServer "task_3_3_skip";
 
-task_3_3 = player createSimpleTask ["Destroy Enemy Helicopters"];
+task_3_3 = player createSimpleTask ["Destroy Enemy Helicopters", task_3_0];
 	task_3_3 setSimpleTaskDescription ["Destroy the enemy helicopters.","Destroy Enemy Helicopters",""];
 	task_3_3 setSimpleTaskDestination (getMarkerPos "helicopter_location");
 	task_3_3 setSimpleTaskType "destroy";

@@ -2,11 +2,11 @@ _run = true;
 task_3_4_skip = false;
 publicVariableServer "task_3_4_skip";
 
-task_3_4 = player createSimpleTask ["Sweep Town Held by Enemies"];
+task_3_4 = player createSimpleTask ["Sweep Town Held by Enemies", task_3_0];
 	task_3_4 setSimpleTaskDescription ["Sweep the town of Chalkeia clean of enemies.","Sweep Town Held by Enemies",""];
 	task_3_4 setSimpleTaskDestination (getMarkerPos "sweep_town");
 	task_3_4 setSimpleTaskType "attack";
-	task_3_4 setTaskState "Assigned";
+	task_3_4 setTaskState "Created";
 	["TaskAssigned",["","Sweep Town Held by Enemies"]] call BIS_fnc_showNotification;
 	
 trg_tsk_3_4 = createTrigger ["EmptyDetector", getMarkerPos "sweep_town"];

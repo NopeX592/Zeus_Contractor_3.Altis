@@ -2,7 +2,7 @@ _run = true;
 task_3_2_skip = false;
 publicVariableServer "task_3_2_skip";
 
-task_3_2 = player createSimpleTask ["Destroy Small Antenna"];
+task_3_2 = player createSimpleTask ["Destroy Small Antenna", task_3_0];
 	task_3_2 setSimpleTaskDescription ["Destroy the small antenna tower.","Destroy Small Antenna",""];
 	task_3_2 setSimpleTaskDestination (getMarkerPos "antenna_location_2");
 	task_3_2 setSimpleTaskType "destroy";
