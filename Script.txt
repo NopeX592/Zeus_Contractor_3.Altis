@@ -6,8 +6,10 @@ Eastwind:                                                                       
     Investigate downed Blackfish 🡻                       🡹                                 🡺 Assasinate Miller
     Investigate destroyed Tank   🡻                       🡹
                                  🡻 Kill:                 🡹
-                                 🡺 Kill enemy combatants 🡹
-                                 🡺 Gather Intel          🡹
+                                 🡺 Sweep Town            🡹
+                                 🡺 Destroy Helicopters   🡹
+                                 🡺 Destroy Comms Towers  🡹
+                                 🡺 Destroy Comms Towers  🡹
 
 Optional:
     Kill Artillery
@@ -61,7 +63,6 @@ Optional:
 	Support:
         • Artillery Strikes possible
             • Use only if no other way
-        • If worst comes to worst we might be able to free up a V-44X
         • Supply drop
             • If called in IND will most likely respond
 
