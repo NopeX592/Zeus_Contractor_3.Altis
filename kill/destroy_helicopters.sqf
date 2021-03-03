@@ -14,7 +14,7 @@ _marker_helicopters = createMarker ["Destroy Enemy Helicopters", getMarkerPos "h
 	_marker_helicopters setMarkerSize [250, 250];
 
 while {_run} do {
-	if ((!(alive helicopter_1) && !(alive helicopter_2) && !(alive helicopter_3)) || (task_3_3_skip)) then {
+	if (((!alive helicopter_1) && (!alive helicopter_2) && (!alive helicopter_3)) || (task_3_3_skip)) then {
 		task_3_3 setTaskState "Succeeded";
 		["TaskSucceeded",["","Destroy Enemy Helicopters"]] call BIS_fnc_showNotification;
 		_marker_helicopters setMarkerSize [0, 0];

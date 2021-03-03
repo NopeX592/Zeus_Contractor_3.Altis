@@ -14,7 +14,7 @@ task_3_0 = player createSimpleTask ["Investigatation"];
 [] execVM "kill\sweep_town.sqf";
 
 while {_run} do {
-	if (("task_3_1" call BIS_fnc_taskCompleted) && ("task_3_2" call BIS_fnc_taskCompleted) && ("task_3_3" call BIS_fnc_taskCompleted) && ("task_3_4" call BIS_fnc_taskCompleted) || (task_3_0_skip)) then {
+	if (((!alive antenna_1) || (task_3_2_skip)) && (((!alive helicopter_1) && (!alive helicopter_2) && (!alive helicopter_3)) || (task_3_3_skip)) && ((!alive antenna_2) || (task_3_1_skip)) && ((triggerActivated trg_tsk_3_4) || (task_3_4_skip)) || (task_3_0_skip)) then {
 		task_3_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
 		[] execVM "kill\kill_miller.sqf";

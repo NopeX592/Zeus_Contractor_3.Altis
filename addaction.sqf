@@ -1,10 +1,10 @@
 _run = true;
 gathered_squad = 0;
 gathered_tank = 0;
-sent_data = false;
+sent_data_blackfish = false;
 publicVariable "gathered_squad";
 publicVariable "gathered_tank";
-publicVariable "send_data";
+publicVariable "sent_data_blackfish";
 
 //Remove Action
 PB_fnc_action_1 = {
@@ -38,11 +38,18 @@ PB_fnc_action_4 = {
 PB_fnc_action_5 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 	[black_box, intel_gathered_5] remoteExec ["removeAction", 0, true];
-
-	[US_fnc_uploadHint] remoteExec ["call", 0, true];
+	
+	[]spawn {
+		for "_i" from 5 to 100 step 5 do { 
+			hint str format ["Uploading Data.\n %1%/100%",str _i];
+			//["Uploading Data.\n %1%/100%",str _i] remoteExec ["hint str format", 0, true];
+			sleep 9;
+		};
 
 	sent_data_blackfish = true;
-	publicVariable "send_data";
+	publicVariable "sent_data_blackfish";
+	publicVariableServer "sent_data_blackfish";
+	};
 };
 
 PB_fnc_action_6 = {

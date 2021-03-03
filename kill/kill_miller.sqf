@@ -14,7 +14,7 @@ _marker_miller = createMarker ["Assassinate Miller", getMarkerPos "miller_locati
 	_marker_miller setMarkerSize [250, 250];
 
 while {_run} do {
-	if (!(alive miller) || (task_3_1_skip)) then {
+	if ((!alive miller) || (task_3_6_skip)) then {
 		task_3_6 setTaskState "Succeeded";
 		["TaskSucceeded",["","Assassinate Miller"]] call BIS_fnc_showNotification;
 		_marker_miller setMarkerSize [0, 0];

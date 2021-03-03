@@ -13,7 +13,7 @@ _marker_artillery = createMarker ["Takeout Artillery", getMarkerPos "artillery_l
 	_marker_artillery setMarkerSize [250, 250];
 
 while {_run} do {
-	if (!(alive sochor_1) && !(alive sochor_2) || (task_3_1_skip)) then {
+	if ((!alive sochor_1) && (!alive sochor_2) || (task_Opt_1_skip)) then {
 		task_Opt_1 setTaskState "Succeeded";
 		["TaskSucceeded",["","Destroy Artillery"]] call BIS_fnc_showNotification;
 		_marker_artillery setMarkerSize [0, 0];
