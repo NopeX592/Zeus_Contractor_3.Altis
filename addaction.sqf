@@ -39,16 +39,7 @@ PB_fnc_action_5 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 	[black_box, intel_gathered_5] remoteExec ["removeAction", 0, true];
 
-	/*
-	for "_i" from 5 to 100 step 5 do {
-		[_i] spawn {
-			sleep 9;
-			params ["_i"];
-			hint str format ["Uploading Data.\n %1%/100%",str _i];
-			hintSilent "";
-		};
-	};
-	*/
+	[US_fnc_uploadHint] remoteExec ["call", 0, true];
 
 	sent_data_blackfish = true;
 	publicVariable "send_data";

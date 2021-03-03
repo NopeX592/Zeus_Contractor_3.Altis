@@ -17,7 +17,7 @@ while {_run_1} do {
 	if ((gathered_tank == 3) || (task_2_3_skip)) then {
 		_run_1 = false;
 		_run_2 = true;
-		
+		[US_fnc_uploadHint] remoteExec ["call", 0, true];	
 		_sent_data_tank = true;
 	};
 };
