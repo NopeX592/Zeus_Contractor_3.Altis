@@ -35,6 +35,7 @@ _roles = "<br/>"+
         • Mostly infantry<br/>
         • Some Technicals<br/>
         • Some mechanized infantry<br/>
+        • More ManPADs<br/>
     • Front line markings only accurate for CSAT<br/>
         • Past front line expect CSAT and IND<br/>
         • Within should only be IND<br/>
@@ -42,6 +43,8 @@ _roles = "<br/>"+
         • Orange Markings are infected areas<br/>
         • Do not enter without consulting with me<br/>
         • Do not enter without CBRN Suits<br/>
+    • Enemy is more reactive<br/>
+        • More QRFs<br/>
 <br/>
 Humanitarian:<br/>
     • Secure Food and Medical<br/>

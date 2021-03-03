@@ -25,6 +25,7 @@ Optional:
 			• Mostly infantry
             • Some Technicals
 			• Some mechanized infantry
+            • More ManPADs
 		• Front line markings only accurate for CSAT
             • Past front line expect CSAT and IND
             • Within should only be IND
@@ -34,6 +35,8 @@ Optional:
             • Do not enter without CBRN Suits
         • Relocated to new FOB
         • Additional assets found at aircraft carrier or FOB Alpha
+        • Enemy is more reactive
+            • More QRFs
 
     Humanitarian:
         • Secure Food and Medical supplies
