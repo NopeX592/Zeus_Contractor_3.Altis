@@ -117,14 +117,13 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
 	for "_i" from 1 to _repetitions step 1 do {
 		_randomStarting = selectRandom _qrf_spawns;
-		_randomDelay = selectRandom [30,40];
 		_randomUnits = selectRandom [4,5,6,7];
 
 		[
 			getMarkerPos _randomStarting,
 			getMarkerPos "qrf_target_1",
 			_randomUnits,
-			_randomDelay,
+			1,
 			independent
 		] call SU_fnc_spawnOPFOR;
 
