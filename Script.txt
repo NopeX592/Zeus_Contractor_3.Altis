@@ -8,8 +8,8 @@ Eastwind:                                                                       
                                  🡻 Kill:                 🡹
                                  🡺 Sweep Town            🡹
                                  🡺 Destroy Helicopters   🡹
-                                 🡺 Destroy Comms Towers  🡹
-                                 🡺 Destroy Comms Towers  🡹
+                                 🡺 Destroy Comms Tower   🡹
+                                 🡺 Destroy Comms Tower   🡹
 
 Optional:
     Kill Artillery
