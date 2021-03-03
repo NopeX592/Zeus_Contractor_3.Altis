@@ -18,5 +18,24 @@ while {_run} do {
 		["TaskSucceeded",["","Destroy Artillery"]] call BIS_fnc_showNotification;
 		_marker_artillery setMarkerSize [0, 0];
 		_run = false;
+
+		//Spawn QRF
+		_randomUnits = selectRandom [5,6,7,8];
+		[
+			getMarkerPos "qrf_spawn_6",
+			getMarkerPos "qrf_target_2",
+			_randomUnits,
+			1,
+			EAST
+		] call SU_fnc_spawnOPFOR;
+
+		_randomUnits = selectRandom [3,4,5,6];
+		[
+			getMarkerPos "qrf_spawn_14",
+			getMarkerPos "qrf_target_2",
+			_randomUnits,
+			1,
+			EAST
+		] call SU_fnc_spawnOPFOR;
 	};
 };

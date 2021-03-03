@@ -19,5 +19,24 @@ while {_run} do {
 		["TaskSucceeded",["","Assassinate Miller"]] call BIS_fnc_showNotification;
 		_marker_miller setMarkerSize [0, 0];
 		_run = false;
+
+		//Spawn QRF
+		_randomUnits = selectRandom [6,7];
+		[
+			getMarkerPos "qrf_spawn_9",
+			getMarkerPos "qrf_target_4",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
+		
+		_randomUnits = selectRandom [5,6,7,8];
+		[
+			getMarkerPos "qrf_spawn_10",
+			getMarkerPos "qrf_target_4",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
 	};
 };

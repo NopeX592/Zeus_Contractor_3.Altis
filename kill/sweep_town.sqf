@@ -25,5 +25,24 @@ while {_run} do {
 		deletevehicle trg_tsk_3_4;
 		_marker_sweep_town setMarkerSize [0, 0];
 		_run = false;
+
+		//Spawn QRF
+		_randomUnits = selectRandom [3,4];
+		[
+			getMarkerPos "qrf_spawn_8",
+			getMarkerPos "qrf_target_3",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
+		
+		_randomUnits = selectRandom [3,4,5,6];
+		[
+			getMarkerPos "qrf_spawn_15",
+			getMarkerPos "qrf_target_3",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
 	};
 };
