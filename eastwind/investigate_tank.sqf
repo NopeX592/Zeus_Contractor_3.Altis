@@ -1,4 +1,5 @@
-_run = true;
+_run_1 = true;
+_run_2 = false;
 task_2_3_skip = false;
 publicVariableServer "task_2_3_skip";
 
@@ -12,11 +13,20 @@ _marker_intel = createMarker ["Investigate Destroyed Tank", getMarkerPos "intel_
 	_marker_intel setMarkerShape "ELLIPSE";
 	_marker_intel setMarkerSize [125, 125];
 
-while {_run} do {
+while {_run_1} do {
 	if ((gathered_tank == 3) || (task_2_3_skip)) then {
+		_run_1 = false;
+		_run_2 = true;
+		
+		_sent_data_tank = true;
+	};
+};
+
+while {_run_2} do {
+	if ((_sent_data_tank) || (task_2_3_skip)) then {
 		task_2_3 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigate Destroyed Tank"]] call BIS_fnc_showNotification;
 		_marker_intel setMarkerSize [0, 0];
-		_run = false;
+		_run_2 = false;
 	};
 };

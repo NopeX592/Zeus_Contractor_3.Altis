@@ -13,7 +13,7 @@ _marker_intel = createMarker ["Investigate Downed Blackfish", getMarkerPos "inte
 	_marker_intel setMarkerSize [175, 175];
 
 while {_run} do {
-	if (((isNull flight_log) && (sent_data)) || (task_2_1_skip)) then {
+	if (((isNull flight_log) && (sent_data_blackfish)) || (task_2_1_skip)) then {
 		task_2_1 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigate Downed Blackfish"]] call BIS_fnc_showNotification;
 		_marker_intel setMarkerSize [0, 0];
