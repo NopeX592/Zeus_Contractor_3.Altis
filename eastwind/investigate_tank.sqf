@@ -29,6 +29,25 @@ while {_run_1} do {
 		sent_data_tank = true;
 		publicVariableServer "_sent_data_tank";
 		};
+
+		//Spawn response
+		for "_i" from 1 to 2 step 1 do {
+			_qrf_spawns = [qrf_spawn_12,qrf_spawn_13];
+			_randomStarting = selectRandom _qrf_spawns;
+			_randomUnits = selectRandom [5,6,7,8];
+
+			[
+				getMarkerPos _randomStarting,
+				getMarkerPos "qrf_target_7",
+				_randomUnits,
+				1,
+				independent
+			] call SU_fnc_spawnOPFOR;
+
+			_newArray = [];
+			{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
+			_qrf_spawns = _newArray;
+		};
 	};
 };
 
