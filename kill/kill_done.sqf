@@ -17,7 +17,9 @@ while {_run} do {
 	if (("task_3_1" call BIS_fnc_taskCompleted) && ("task_3_2" call BIS_fnc_taskCompleted) && ("task_3_3" call BIS_fnc_taskCompleted) && ("task_3_4" call BIS_fnc_taskCompleted) || (task_3_0_skip)) then {
 		task_3_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
-		//[] execVM "kill\destroy_big_antenna.sqf";
+		[] execVM "kill\kill_miller.sqf";
+		[] execVM "kill\recover_eastwind_decoy.sqf";
+		[] execVM "kill\recover_eastwind_actual.sqf";
 		_run = false;
 	};
 };

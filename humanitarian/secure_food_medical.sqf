@@ -1,5 +1,5 @@
-_run = true;
 _run_1 = true;
+_run_2 = false;
 task_1_1_skip = false;
 publicVariableServer "task_1_1_skip";
 
@@ -41,6 +41,7 @@ while {_run_1} do {
 			trg_tsk_1_1_2 setTriggerStatements ["this","[] call FM_fnc_dropAirdrop;",""];
 			trg_tsk_1_1_2 setTriggerText "Call in the IDAP supplies";
 			_run_1 = false;
+			_run_2 = true;
 	};
 };
 
