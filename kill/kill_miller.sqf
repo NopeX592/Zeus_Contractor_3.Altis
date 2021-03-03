@@ -5,7 +5,7 @@ publicVariableServer "task_3_6_skip";
 task_3_6 = player createSimpleTask ["Assassinate Miller"];
 	task_3_6 setSimpleTaskDescription ["Assasinate the traitor Miller.","Assassinate Miller",""];
 	task_3_6 setSimpleTaskDestination (getMarkerPos "miller_location");
-	task_3_6 setSimpleTaskType "klil";
+	task_3_6 setSimpleTaskType "kill";
 	task_3_6 setTaskState "Created";
 	["TaskCreated",["","Assassinate Miller"]] call BIS_fnc_showNotification;
 
