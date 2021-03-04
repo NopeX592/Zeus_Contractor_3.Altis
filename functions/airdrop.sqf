@@ -9,8 +9,7 @@ Example:
 	1000,
 	200,
 	4,
-	[0,0,-1.2],
-	WEST
+	[0,0,-1.2]
 ] call AD_fnc_airDrop;
 __________________________________________________________________*/
 params [
@@ -64,7 +63,14 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_drop_distance = _drop_distance * 1.5;
 	}; 
 
+	//Set Variables
 	_count = 1;
+	_unload_pos_1 = 6;
+	_unload_pos_2 = 6;
+	_load_pos_1 = 0;
+	_load_pos_2 = 0;
+	boxes_loaded = 0;
+	boxes_unloaded = 0;
 
 	//Create Airdrops
 	{
@@ -101,46 +107,61 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		};
 
 		//Add Action
-		AD_fnc_createAction = {
-			params ["_hemtt", "_box"];
-			hint "got to createAction";
+		AD_fnc_createLoad = {
+			params ["_hemtt", "_box", "_load_pos", "_unload_pos"];
 			_box_loaded = _box addAction ["Load Goods onto HEMTT","
-				params ['_hemtt', '_box', '_box_loaded'];
+				params ['_box', '_player', '_box_loaded', '_arguments'];
+				_arguments params ['_hemtt', '_load_pos', '_unload_pos'];
 				player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
-				_box attachTo [_hemtt, [0, 0, 0]];
+				_box attachTo [_hemtt, [0, _load_pos, -0.18]];
+				boxes_loaded = boxes_loaded + 1;
+				publicVariable 'boxes_loaded';
+				[_box, _unload_pos] remoteExec ['AD_fnc_createUnLoad', 0, true];
 				[_box, _box_loaded] remoteExec ['removeAction', 0, true];
-			",nil,1,true,false,"","true",3,false,"",""];
+			",[_hemtt, _load_pos, _unload_pos],1,true,false,"","true",3,false,"",""];
 		};
 
-		box = _x;
+		AD_fnc_createUnLoad = {
+			params ['_box', '_unload_pos'];
+			_box_unloaded = _box addAction ["Unload Goods","
+				params ['_box', '_player', '_box_unloaded', '_arguments'];
+				_arguments params ['_unload_pos'];
+				player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+				detach _box;
+				_unload_box = _box getRelPos [_unload_pos, 180];
+				_box setPos _unload_box;
+				boxes_unloaded = boxes_unloaded + 1;
+				publicVariable 'boxes_unloaded';
+				[_box, _box_unloaded] remoteExec ['removeAction', 0, true];
+			",_unload_pos,1,true,false,"","true",5,false,"",""];
+		};
+
+		_box = _x;
 
 		if (isServer) then {
 			hint "2";
 			if (_count mod 2 == 0) then {
-				hint "even";
-				_hemtt = hemtt_collect_1;
-				[_hemtt, box] remoteExec ["AD_fnc_createAction", 0, true];
+				[hemtt_collect_1, _box, _load_pos_1, _unload_pos_1] remoteExec ["AD_fnc_createLoad", 0, true];
+				_load_pos_1 = _load_pos_1 - 1.5;
+				_unload_pos_1 = _unload_pos_1 + 1;
 			} else {
-				hint "odd";
-				_hemtt = hemtt_collect_2;
-				[_hemtt, box] remoteExec ["AD_fnc_createAction", 0, true];
+				[hemtt_collect_2, _box, _load_pos_2, _unload_pos_2] remoteExec ["AD_fnc_createLoad", 0, true];
+				_load_pos_2 = _load_pos_2 - 1.5;
+				_unload_pos_2 = _unload_pos_2 + 1;
 			};
 		};
 		
 		//Cycle HEMTT
 		_count = _count + 1;
-	} forEach _objArray;
 
-	//Spawn QRF
-	_repetitions = _repetitions - 1;
-	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
-	for "_i" from 1 to _repetitions step 1 do {
+		//Spawn QRF
+		_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
 		_randomStarting = selectRandom _qrf_spawns;
 		_randomUnits = selectRandom [4,5,6,7];
 
 		[
 			getMarkerPos _randomStarting,
-			getMarkerPos "qrf_target_1",
+			position _x,
 			_randomUnits,
 			1,
 			independent
@@ -149,5 +170,5 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_newArray = [];
 		{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
 		_qrf_spawns = _newArray;
-	};
+	} forEach _objArray;
 };

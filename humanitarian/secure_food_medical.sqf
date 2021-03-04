@@ -3,10 +3,10 @@ _run_2 = false;
 task_1_1_skip = false;
 publicVariableServer "task_1_1_skip";
 
-task_1_1 = player createSimpleTask ["Secure Food and Medical Supplies"];
-	task_1_1 setSimpleTaskDescription ["Secure the food and the medical supplies, for IDAP to collect.","Secure Food and Medical Supplies",""];
+task_1_1 = player createSimpleTask ["Collect Food and Medical Supplies"];
+	task_1_1 setSimpleTaskDescription ["Collect the food and medical supplies.","Collect Food and Medical Supplies",""];
 	task_1_1 setSimpleTaskDestination (getMarkerPos "dropsite");
-	task_1_1 setSimpleTaskType "defend";
+	task_1_1 setSimpleTaskType "container";
 	task_1_1 setTaskState "Created";
 
 _marker_food_medical = createMarker ["marker_food_medical", getMarkerPos "dropsite"];
@@ -15,16 +15,14 @@ _marker_food_medical = createMarker ["marker_food_medical", getMarkerPos "dropsi
 
 FM_fnc_dropAirdrop = {
 		[
-			"CargoNet_01_box_F",
+			"Land_PaperBox_01_small_stacked_F",
 			position player,
-			//dropsite,
 			125,
 			750,
 			1000,
 			200,
 			4,
-			[0,0,-1.2],
-			WEST
+			[0,0,-1.2]
 		] call AD_fnc_airDrop;
 		_marker_food_medical setMarkerSize [0, 0];
 };
@@ -45,9 +43,12 @@ while {_run_1} do {
 	};
 };
 
-/*
-while {_run} do {
-	if () then {
 
+while {_run} do {
+	if (boxes_loaded == 4) then {
+		task_1_1 setTaskState "Succeeded";
+		["TaskSucceeded",["","Collect Food and Medical Supplies"]] call BIS_fnc_showNotification;
+		_marker_food_medical setMarkerSize [0, 0];
+		_run = false;
 	};
 };
