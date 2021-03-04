@@ -1,16 +1,5 @@
 /*
 Author: HallyG
-Spawns a supply drop of desired object.
-
-Arguments(s):
-0: Supply Drop Object (classname) to spawn - <STRING>
-1: Supply Drop Centre - <MARKER, OBJECT, LOCATION, GROUP, TASK, POSITION>
-2: Supply Drop Height - <SCALAR>
-3: Supply Drop attachTo Position - <ARRAY>
-
-Return Value:
-<OBJECT>
-
 Example:
 [
 	"CargoNet_01_box_F",
@@ -66,52 +55,82 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	sleep 9.75;
 
 	//Repeat
-	for "_i" from 1 to _repetitions step 1 do {
+	_objArray = [];
 
+	for "_i" from 1 to _repetitions step 1 do {
 		//Space out drops
 		_centre_distance = dropsite_logic getRelPos [_drop_distance, _direction_e];
+		_objArray pushBack createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
+		_drop_distance = _drop_distance * 1.5;
+	}; 
 
-		private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
+	_count = 1;
+
+	//Create Airdrops
+	{
 		private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
 
-		_para setDir getDir _obj;
-		_para setPos getPos _obj;
-		_obj lock false;
-		_obj attachTo [_para, _attachTo];
+		_para setDir getDir _x;
+		_para setPos getPos _x;
+		_x lock false;
+		_x attachTo [_para, _attachTo];
 
-		//Attach Smoke
-		_smoke = "Blue";
-		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-		_smoke attachTo [_obj, [0,0,0]];
-
-		[_obj, _para] spawn {
-			params ["_obj","_para"];
+		[_x, _para] spawn {
+			params ["_x","_para"];
 				
 			waitUntil {
 				sleep 0.01;
-				((position _obj) select 2) < 2 
+				((position _x) select 2) < 2 
 				|| 
 				isNull _para 
 				|| 
-				(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
+				(count (lineIntersectsWith [getPosASL _x, (getPosASL _x) vectorAdd [0, 0, -0.5], _x, _para])) > 0
 			};
 				
-			_para disableCollisionWith _obj;
-			_obj setVectorUp [0,0,1];
-			_obj setVelocity [0,0,0];
-			detach _obj;
+			_para disableCollisionWith _x;
+			_x setVectorUp [0,0,1];
+			_x setVelocity [0,0,0];
+			detach _x;
 				
 			if (!isNull _para) then {deleteVehicle _para};
 
-			(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
-
 			//Attach Smoke
-			_smoke = "Blue";
+			_smoke = "Orange";
 			_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-			_smoke attachTo [_obj, [0,0,0]];
+			_smoke attachTo [_x, [0,0,0]];
 		};
-		_drop_distance = _drop_distance * 1.5
-	};
+
+		//Add Action
+		AD_fnc_createAction = {
+			params ["_hemtt", "_box"];
+			hint "got to createAction";
+			_box_loaded = _box addAction ["Load Goods onto HEMTT","
+				params ['_hemtt', '_box', '_box_loaded'];
+				player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+				_box attachTo [_hemtt, [0, 0, 0]];
+				[_box, _box_loaded] remoteExec ['removeAction', 0, true];
+			",nil,1,true,false,"","true",3,false,"",""];
+		};
+
+		box = _x;
+
+		if (isServer) then {
+			hint "2";
+			if (_count mod 2 == 0) then {
+				hint "even";
+				_hemtt = hemtt_collect_1;
+				[_hemtt, box] remoteExec ["AD_fnc_createAction", 0, true];
+			} else {
+				hint "odd";
+				_hemtt = hemtt_collect_2;
+				[_hemtt, box] remoteExec ["AD_fnc_createAction", 0, true];
+			};
+		};
+		
+		//Cycle HEMTT
+		_count = _count + 1;
+	} forEach _objArray;
+
 	//Spawn QRF
 	_repetitions = _repetitions - 1;
 	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
@@ -131,18 +150,4 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
 		_qrf_spawns = _newArray;
 	};
-
-	//Spawn IDAP
-	_repetitions = _repetitions - 2;
-	for "_i" from 1 to _repetitions step 1 do {
-		[
-			getMarkerPos "idap_spawn",
-			getMarkerPos "qrf_target_1",
-			2,
-			180,
-			CIVILIAN
-		] call SU_fnc_spawnIDAP;
-	};
 };
-
-_obj
