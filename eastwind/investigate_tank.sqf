@@ -8,7 +8,7 @@ publicVariableServer "sent_data_tank";
 task_2_3 = player createSimpleTask ["Investigate Destroyed Tank", task_2_0];
 	task_2_3 setSimpleTaskDescription ["Investigate the destroyed tanks you may find it in the estimated area.","Investigate Destroyed Tank",""];
 	task_2_3 setSimpleTaskDestination (getMarkerPos "intel_tank");
-	task_2_3 setSimpleTaskType "documents";
+	task_2_3 setSimpleTaskType "upload";
 	task_2_3 setTaskState "Created";
 
 _marker_intel = createMarker ["Investigate Destroyed Tank", getMarkerPos "intel_tank"];

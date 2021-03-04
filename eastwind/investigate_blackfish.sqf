@@ -5,7 +5,7 @@ publicVariableServer "task_2_1_skip";
 task_2_1 = player createSimpleTask ["Investigate Downed Blackfish", task_2_0];
 	task_2_1 setSimpleTaskDescription ["Investigate the downed Blackfish you may find it in the estimated area.","Investigate Downed Blackfish",""];
 	task_2_1 setSimpleTaskDestination (getMarkerPos "intel_blackfish");
-	task_2_1 setSimpleTaskType "documents";
+	task_2_1 setSimpleTaskType "upload";
 	task_2_1 setTaskState "Created";
 
 _marker_intel = createMarker ["Investigate Downed Blackfish", getMarkerPos "intel_blackfish"];
