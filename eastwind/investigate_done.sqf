@@ -4,7 +4,7 @@ publicVariableServer "task_2_0_skip";
 
 task_2_0 = player createSimpleTask ["Investigatation"];
 	task_2_0 setSimpleTaskDescription ["Investigate the downed blackfish and the killed squad.","Investigatation",""];
-	task_2_0 setSimpleTaskType "documents";
+	task_2_0 setSimpleTaskType "upload";
 	task_2_0 setTaskState "Created";
 
 []execVM "eastwind\investigate_blackfish.sqf";

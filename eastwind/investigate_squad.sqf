@@ -5,7 +5,7 @@ publicVariableServer "task_2_2_skip";
 task_2_2 = player createSimpleTask ["Investigate Dead Squad", task_2_0];
 	task_2_2 setSimpleTaskDescription ["Investigate the killed soldiers you may find it in the estimated area.","Investigate Dead Squad",""];
 	task_2_2 setSimpleTaskDestination (getMarkerPos "intel_squad");
-	task_2_2 setSimpleTaskType "documents";
+	task_2_2 setSimpleTaskType "upload";
 	task_2_2 setTaskState "Created";
 
 _marker_intel = createMarker ["Investigate Dead Squad", getMarkerPos "intel_squad"];
