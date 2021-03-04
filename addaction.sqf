@@ -100,13 +100,6 @@ PB_fnc_action_9 = {
 	[miller, intel_gathered_9] remoteExec ["removeAction", 0, true];
 };
 
-//Load Boxes
-PB_fnc_action_10 = {
-	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
-	asdasd attachTo [hemtt_collect_1, [0, 0, 0]]; 
-	[asdasd, intel_gathered_10] remoteExec ["removeAction", 0, true];
-};
-
 //Create post briefing function
 PB_fnc_postbriefing = {
 	//Add Action to squad
