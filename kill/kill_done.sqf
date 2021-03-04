@@ -17,9 +17,6 @@ while {_run} do {
 	if (((!alive antenna_1) || (task_3_2_skip)) && (((!alive helicopter_1) && (!alive helicopter_2) && (!alive helicopter_3)) || (task_3_3_skip)) && ((!alive antenna_2) || (task_3_1_skip)) && ((triggerActivated trg_tsk_3_4) || (task_3_4_skip)) || (task_3_0_skip)) then {
 		task_3_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
-		[] execVM "kill\kill_miller.sqf";
-		[] execVM "kill\recover_eastwind_decoy.sqf";
-		[] execVM "kill\recover_eastwind_actual.sqf";
 		_run = false;
 	};
 };

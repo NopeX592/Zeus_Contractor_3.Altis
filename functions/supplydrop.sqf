@@ -1,16 +1,5 @@
 /*
 Author: HallyG
-Spawns a supply drop of desired object.
-
-Arguments(s):
-0: Supply Drop Object (classname) to spawn - <STRING>
-1: Supply Drop Centre - <MARKER, OBJECT, LOCATION, GROUP, TASK, POSITION>
-2: Supply Drop Height - <SCALAR>
-3: Supply Drop attachTo Position - <ARRAY>
-
-Return Value:
-<OBJECT>
-
 Example:
 [
 	"B_supplyCrate_F",
@@ -78,11 +67,6 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_para setPos getPos _obj;
 		_obj lock false;
 		_obj attachTo [_para, _attachTo];
-
-		//Attach Smoke
-		_smoke = "Green";
-		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-		_smoke attachTo [_obj, [0,0,0]];
 
 		[_obj, _para] spawn {
 			params ["_obj","_para"];

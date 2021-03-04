@@ -1,9 +1,10 @@
 Humanitarian:
-    Secure Food and Medical supplies 🡺 (Dropoff Food and Medical supplies) 🡺 Retake Village 🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡻
-                                                                                                                                                           🡻
-Eastwind:                                                                                                                                                  🡻
-    Investigate dead squad       🡻                       🡺 Return to get CBRN and Briefing 🡺 Capture Eastwind Device 🡺 Return Eastwind Device          🡺 Pettka drives off with Eastwind
-    Investigate downed Blackfish 🡻                       🡹                                 🡺 Assasinate Miller       🡺 IND get in touch                🡺 Dropoff Eastwind Device with IND
+    Secure Food and Medical supplies 🡺 (Dropoff Food and Medical supplies) 🡻
+                                     🡺 Retake Village                      🡻
+                                                                            🡻
+Eastwind:                                                                   🡻
+    Investigate dead squad       🡻                       🡺                🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡺 Capture Eastwind Device 🡺 Return Eastwind Device 🡺 Pettka drives off with Eastwind
+    Investigate downed Blackfish 🡻                       🡹                                                                             🡺 Assasinate Miller       🡺 IND get in touch       🡺 Dropoff Eastwind Device with IND
     Investigate destroyed Tank   🡻                       🡹
                                  🡻 Kill:                 🡹
                                  🡺 Sweep Town            🡹
