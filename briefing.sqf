@@ -47,11 +47,11 @@ _roles = "<br/>"+
         • More QRFs<br/>
 <br/>
 Humanitarian:<br/>
-    • Secure Food and Medical<br/>
-    • Dropoff HEMTTs<br/>
-    • IDAP personell will collect<br/>
+    • Collect Food and Medical supplies<br/>
+    • Load supplies on to HEMTTs<br/>
     • Afterwards IDAP command will be in touch<br/>
     • Enemies will let off once IDAP arrives<br/>
+    • Air Drop can be called in via the radio in the marked area<br/>
 <br/>
 Eastwind:<br/>
     • Lost contact to squad<br/>

@@ -40,11 +40,11 @@ Optional:
             • More QRFs
 
     Humanitarian:
-        • Secure Food and Medical supplies
-        • Dropoff HEMTTs
-        • IDAP personell will collect
+        • Collect Food and Medical supplies
+        • Load supplies on to HEMTTs
         • Afterwards IDAP command will be in touch
         • Enemies will let off once IDAP arrives
+        • Air Drop can be called in via the radio in the marked area
 
     Eastwind:
         • Lost contact to squad
