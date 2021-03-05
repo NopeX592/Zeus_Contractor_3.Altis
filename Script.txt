@@ -3,14 +3,14 @@ Humanitarian:
                                      🡺 Retake Village                      🡻
                                                                             🡻
 Eastwind:                                                                   🡻
-    Investigate dead squad       🡻                       🡺                🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡺 Capture Eastwind Device 🡺 Return Eastwind Device 🡺 Pettka drives off with Eastwind
-    Investigate downed Blackfish 🡻                       🡹                                                                             🡺 Assasinate Miller       🡺 IND get in touch       🡺 Dropoff Eastwind Device with IND
-    Investigate destroyed Tank   🡻                       🡹
-                                 🡻 Kill:                 🡹
-                                 🡺 Sweep Town            🡹
-                                 🡺 Destroy Helicopters   🡹
-                                 🡺 Destroy Comms Tower   🡹
-                                 🡺 Destroy Comms Tower   🡹
+    Investigate dead squad       🡻                     🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡺 Capture Eastwind Device 🡺 Return Eastwind Device 🡺 Pettka drives off with Eastwind
+    Investigate downed Blackfish 🡻                     🡹                                                                               🡺 Assasinate Miller       🡺 IND get in touch       🡺 Dropoff Eastwind Device with IND
+    Investigate destroyed Tank   🡻                     🡹
+                                 🡻 Kill:               🡹
+                                 🡺 Sweep Town          🡹
+                                 🡺 Destroy Helicopters 🡹
+                                 🡺 Destroy Comms Tower 🡹
+                                 🡺 Destroy Comms Tower 🡹
 
 Optional:
     Kill Artillery
