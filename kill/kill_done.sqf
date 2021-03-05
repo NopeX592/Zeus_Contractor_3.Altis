@@ -5,7 +5,7 @@ publicVariableServer "task_3_0_skip";
 task_3_0 = player createSimpleTask ["Investigatation"];
 	task_3_0 setSimpleTaskDescription ["Investigate the downed blackfish and the killed squad.","Investigatation",""];
 	task_3_0 setSimpleTaskDestination (getMarkerPos "intel_squad");
-	task_3_0 setSimpleTaskType "documents";
+	task_3_0 setSimpleTaskType "kill";
 	task_3_0 setTaskState "Created";
 
 [] execVM "kill\destroy_big_antenna.sqf";

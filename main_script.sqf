@@ -15,7 +15,7 @@ while {_run} do {
 		["TaskSucceeded",["","Get Briefing"]] call BIS_fnc_showNotification;
 		
 		//Execute Missions
-		[]execVM "humanitarian\secure_food_medical.sqf";
+		[]execVM "humanitarian\collect_food_medical.sqf";
 		[]execVM "eastwind\investigate_done.sqf";
 		[]execVM "optional\destroy_artillery.sqf";
 		
