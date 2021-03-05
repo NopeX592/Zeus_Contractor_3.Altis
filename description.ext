@@ -15,6 +15,17 @@ class Header
 	maxPlayers = 15;	// maximum number of players the mission supports
 };
 
+class CfgSounds
+{
+	sounds[] = {};
+	class Hardbass
+	{
+		name = "Hardbass";
+		sound[] = {"media\hardbass.ogg", 0.8, 1, 100};
+		titles[] = {1, ""};
+	};
+};
+
 //Respawn Settings
 respawn = 3;
 respawnDelay = 20;

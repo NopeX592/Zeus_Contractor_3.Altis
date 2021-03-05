@@ -6,6 +6,10 @@ publicVariable "gathered_squad";
 publicVariable "gathered_tank";
 publicVariable "sent_data_blackfish";
 
+PB_fnc_hardbass = {
+	blyat_mobile say3D "Hardbass";
+};
+
 //Intel Squad
 PB_fnc_action_1 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
@@ -126,5 +130,14 @@ sleep 1;
 if (isServer) then {
 	//Add Actions to Blackfish and Squad
 	[PB_fnc_postbriefing] remoteExec ["call", 0, true];
-	_run = false;
+};
+
+sleep 1;
+
+while {true} do {
+	if (isServer) then {
+		//Play Hardbass
+		[PB_fnc_hardbass] remoteExec ["call", 0, true];
+		sleep 75;
+	};
 };
