@@ -1,8 +1,6 @@
 _run = true;
 task_1_2_skip = false;
-task_1_2_done = false;
 publicVariableServer "task_1_2_skip";
-publicVariableServer "task_1_2_done";
 
 task_1_2 = player createSimpleTask ["Dropoff Food and Medical Supplies"];
 	task_1_2 setSimpleTaskDescription ["Dropoff the food and medical supplies.","Dropoff Food and Medical Supplies",""];
@@ -25,7 +23,6 @@ while {_run} do {
 		["TaskSucceeded",["","Dropoff Food and Medical Supplies"]] call BIS_fnc_showNotification;
 		_marker_food_medical_dropoff setMarkerSize [0, 0];
 		deleteVehicle trg_tsk_1_2;
-		task_1_2_done = true;
 		_run = false;
 	};
 };

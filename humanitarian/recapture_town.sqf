@@ -1,8 +1,6 @@
 _run = true;
 task_1_3_skip = false;
-task_1_3_done = false;
 publicVariableServer "task_1_3_skip";
-publicVariableServer "task_1_3_done";
 
 task_1_3 = player createSimpleTask ["Recapture Kalithea"];
 	task_1_3 setSimpleTaskDescription ["Recapture the town of Kalithea.","Recapture Kalithea",""];
@@ -26,7 +24,6 @@ while {_run} do {
 		["TaskSucceeded",["","Recapture Kalithea"]] call BIS_fnc_showNotification;
 		deletevehicle trg_tsk_1_3;
 		deleteMarker _marker_kalithea;
-		task_1_3_done = true;
 		_run = false;
 	};
 };
