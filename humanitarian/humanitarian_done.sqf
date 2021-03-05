@@ -1,6 +1,8 @@
 _run = true;
 task_1_0_skip = false;
+task_1_0_done = false;
 publicVariableServer "task_1_0_skip";
+publicVariableServer "task_1_0_done";
 
 task_1_0 = player createSimpleTask ["Investigatation"];
 	task_1_0 setSimpleTaskDescription ["Investigate the downed blackfish and the killed squad.","Investigatation",""];
@@ -16,5 +18,6 @@ while {_run} do {
 		task_1_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
 		_run = false;
+		sleep 1;
 	};
 };

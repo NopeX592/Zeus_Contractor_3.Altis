@@ -1,6 +1,8 @@
 _run = true;
 task_3_0_skip = false;
+task_3_0_done = false;
 publicVariableServer "task_3_0_skip";
+publicVariableServer "task_3_0_done";
 
 task_3_0 = player createSimpleTask ["Investigatation"];
 	task_3_0 setSimpleTaskDescription ["Investigate the downed blackfish and the killed squad.","Investigatation",""];
@@ -17,6 +19,8 @@ while {_run} do {
 	if (((!alive antenna_1) || (task_3_2_skip)) && (((!alive helicopter_1) && (!alive helicopter_2) && (!alive helicopter_3)) || (task_3_3_skip)) && ((!alive antenna_2) || (task_3_1_skip)) && ((triggerActivated trg_tsk_3_4) || (task_3_4_skip)) || (task_3_0_skip)) then {
 		task_3_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
+		task_3_0_done = true;
 		_run = false;
+		sleep 1;
 	};
 };
