@@ -2,7 +2,9 @@ _run_1 = true;
 _run_2 = false;
 sent_data_tank = false;
 task_2_3_skip = false;
+task_2_3_done = false;
 publicVariableServer "task_2_3_skip";
+publicVariableServer "task_2_3_done";
 publicVariableServer "sent_data_tank";
 
 task_2_3 = player createSimpleTask ["Investigate Destroyed Tank", task_2_0];
@@ -56,6 +58,8 @@ while {_run_2} do {
 		task_2_3 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigate Destroyed Tank"]] call BIS_fnc_showNotification;
 		_marker_intel setMarkerSize [0, 0];
+		task_2_1_done = true;
+		publicVariableServer "task_2_1_done";
 		_run_2 = false;
 	};
 };

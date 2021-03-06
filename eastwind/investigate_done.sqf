@@ -14,7 +14,7 @@ task_2_0 = player createSimpleTask ["Investigatation"];
 sleep 10;
 
 while {_run} do {
-	if ((((isNull flight_log) && (sent_data_blackfish)) || (task_2_1_skip)) && ((gathered_squad == 4) || (task_2_2_skip)) && ((sent_data_tank) || (task_2_3_skip)) || (task_2_0_skip)) then {
+	if (((task_2_1_done) && (task_2_2_done) && (task_2_3_done)) || (task_2_0_skip)) then {
 		task_2_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
 		[] execVM "kill\kill_done.sqf";
