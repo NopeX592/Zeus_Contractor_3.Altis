@@ -14,7 +14,7 @@ task_1_0 = player createSimpleTask ["Investigatation"];
 [] execVM "humanitarian\recapture_town.sqf";
 
 while {_run} do {
-	if (((boxes_unloaded == 4) || (task_1_2_skip) || ((triggerActivated trg_tsk_1_3) || (task_1_3_skip))) || (task_1_0_skip)) then {
+	if (((task_1_2_done) && (task_1_3_done)) || (task_1_0_skip)) then {
 		task_1_0 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigatation"]] call BIS_fnc_showNotification;
 		_run = false;
