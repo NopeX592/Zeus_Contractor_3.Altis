@@ -1,6 +1,8 @@
 _run = true;
 task_1_0_skip = false;
 task_1_0_done = false;
+task_1_2_done = false;
+task_1_3_done = false;
 publicVariableServer "task_1_0_skip";
 publicVariableServer "task_1_0_done";
 
