@@ -161,7 +161,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		if (_qrf_amount < _repetitions) then {
 			_qrf_amount = _qrf_amount + 1;
 			_randomStarting = selectRandom _qrf_spawns;
-			_randomUnits = selectRandom [7,8,9,10,11];
+			_randomUnits = selectRandomWeighted [6,0.05,7,0.1,8,0.5,9,0.1,10,0.1,11,0.1,12,0.05];
 			[
 				getMarkerPos _randomStarting,
 				position _x,
