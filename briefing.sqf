@@ -16,6 +16,7 @@ format [" Authors: %1<br/><br/>",getText (missionconfigfile >> "author")]+
 "FEATURES:<br/>"+
 "• Virtual Arsenal<br/>"+
 "• Artillery Support<br/>"+
+"• Mortar Support<br/>"+
 "• V-44X Blackfish Support<br/>"+
 "• Supply Drop<br/>"+
 "<br/>"+
@@ -49,7 +50,8 @@ _roles = "<br/>"+
 Humanitarian:<br/>
     • Collect Food and Medical supplies<br/>
     • Load supplies on to HEMTTs<br/>
-    • Afterwards IDAP command will be in touch<br/>
+    • Dropoff supplies in Kalithea<br/>
+    • Recapture Kalithea from IND<br/>
     • Enemies will let off once IDAP arrives<br/>
     • Air Drop can be called in via the radio in the marked area<br/>
 <br/>
@@ -74,6 +76,7 @@ Kill:<br/>
 Support:<br/>
     • Artillery Strikes possible<br/>
         • Use only if no other way<br/>
+    • Mortar Support possible<br/>
     • Supply drop<br/>
         • If called in IND will most likely respond<br/>
 <br/>"+
@@ -83,6 +86,27 @@ waitUntil {!isNull player};
 player createDiaryRecord ["Diary", ["Notes",_roles]];
 player createDiaryRecord ["Diary", [_mission, _diary_text]];
 
+[] spawn {
+sleep 3;
+[
+    screen_lrg_4,
+    getMarkerPos "uav_spawn_3",
+    getMarkerPos "uav_target_3"
+] call CF_fnc_createFeed;
+sleep 1;
+[
+    screen_lrg_3,
+    getMarkerPos "uav_spawn_1",
+    getMarkerPos "uav_target_1"
+] call CF_fnc_createFeed;
+sleep 1;
+[
+    screen_lrg_5,
+    getMarkerPos "uav_spawn_2",
+    getMarkerPos "uav_target_2"
+] call CF_fnc_createFeed;
+};
+/*
 briefing_0_1 = false;
 briefing_0_2 = false;
 briefing_0_3 = false;
@@ -93,8 +117,11 @@ publicVariableServer "briefing_0_3";
 
 while {_run_1} do {
 	if (briefing_0_1) then {
-	screen_lrg_1 setObjectTextureGlobal [0,""];
-	screen_lrg_2 setObjectTextureGlobal [0,""];
+        [
+	        screen_lrg_3,
+            getMarkerPos "uav_spawn_3",
+            getMarkerPos "uav_target_3"
+        ] call CF_fnc_createFeed;
 	_run_1 = false;
 	_run_2 = true;
 	};
@@ -102,8 +129,11 @@ while {_run_1} do {
 
 while {_run_2} do {
 	if (briefing_0_2) then {
-	screen_lrg_1 setObjectTextureGlobal [0,""];
-	screen_lrg_2 setObjectTextureGlobal [0,""];
+        [
+	        screen_lrg_3,
+            getMarkerPos "uav_spawn_1",
+            getMarkerPos "uav_target_1"
+        ] call CF_fnc_createFeed;
 	_run_2 = false;
 	_run_3 = true;
 	};
@@ -111,8 +141,7 @@ while {_run_2} do {
 
 while {_run_3} do {
 	if (briefing_0_3) then {
-	screen_lrg_1 setObjectTextureGlobal [0,""];
-	screen_lrg_2 setObjectTextureGlobal [0,""];
+
 	_run_3 = false;
 	};
 };

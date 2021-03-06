@@ -17,3 +17,4 @@ AD_fnc_supplyDrop = compile preprocessFileLineNumbers "functions\supplydrop.sqf"
 AD_fnc_airDrop = compile preprocessFileLineNumbers "functions\airdrop.sqf";
 SU_fnc_spawnOPFOR = compile preprocessFileLineNumbers "functions\spawn_qrf_opfor.sqf";
 SU_fnc_spawnIDAP = compile preprocessFileLineNumbers "functions\spawn_qrf_idap.sqf";
+CF_fnc_createFeed = compile preprocessFileLineNumbers "functions\uav_feed.sqf";
