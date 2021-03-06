@@ -42,7 +42,8 @@ Optional:
     Humanitarian:
         • Collect Food and Medical supplies
         • Load supplies on to HEMTTs
-        • Afterwards IDAP command will be in touch
+        • Dropoff supplies in Kalithea
+        • Recapture Kalithea from IND
         • Enemies will let off once IDAP arrives
         • Air Drop can be called in via the radio in the marked area
 
@@ -62,11 +63,12 @@ Optional:
         • Enemy Units
             • Should have intel on them
         • Kill Artillery
-             • High Priority
+            • High Priority
 
 	Support:
         • Artillery Strikes possible
             • Use only if no other way
+        • Mortar Support possible
         • Supply drop
             • If called in IND will most likely respond
 

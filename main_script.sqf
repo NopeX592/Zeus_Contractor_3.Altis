@@ -18,7 +18,7 @@ while {_run} do {
 		[]execVM "humanitarian\collect_food_medical.sqf";
 		[]execVM "eastwind\investigate_done.sqf";
 		[]execVM "optional\destroy_artillery.sqf";
-		[]execVM "eastwind\humanitarian_done.sqf";
+		[]execVM "eastwind\humanitarian_kill_done.sqf";
 		
 		_run = false;
 	};

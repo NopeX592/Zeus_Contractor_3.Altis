@@ -1,5 +1,6 @@
 /*
 Author: HallyG
+Modified by: Nope.X
 Example:
 [
 	"B_supplyCrate_F",
