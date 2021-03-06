@@ -46,17 +46,9 @@ params [
 			auto_rifle = "I_G_Soldier_AR_F" createUnit [_location_start, _qrf_group];
 			grenadier = "I_G_Soldier_GL_F" createUnit [_location_start, _qrf_group];
 
-			//Move Mandatory into vehicle
-			squad_lead moveInAny vehicleSpawn;
-			auto_rifle moveInAny vehicleSpawn;
-			grenadier moveInAny vehicleSpawn;
-
 			//Spawn Riflemen
 			for "_i" from 1 to _amount step 1 do {
 				rifle_man = "I_G_Soldier_F" createUnit [_location_start, _qrf_group];
-
-				//Move units into vehicle
-				rifle_man moveInAny vehicleSpawn;
 			};
 
 		} else {
@@ -75,17 +67,9 @@ params [
 			auto_rifle = "O_Soldier_AR_F" createUnit [_location_start, _qrf_group];
 			grenadier = "O_Soldier_GL_F" createUnit [_location_start, _qrf_group];
 
-			//Move Mandatory into vehicle
-			squad_lead moveInAny vehicleSpawn;
-			auto_rifle moveInAny vehicleSpawn;
-			grenadier moveInAny vehicleSpawn;
-
 			//Spawn Riflemen
 			for "_i" from 1 to _amount step 1 do {
 				rifle_man = "O_Soldier_F" createUnit [_location_start, _qrf_group];
-				
-				//Move units into vehicle
-				rifle_man moveInAny vehicleSpawn;
 			};
 		};
 	
