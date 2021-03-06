@@ -140,7 +140,6 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_box = _x;
 
 		if (isServer) then {
-			hint "2";
 			if (_count mod 2 == 0) then {
 				[hemtt_collect_1, _box, _load_pos_1, _unload_pos_1] remoteExec ["AD_fnc_createLoad", 0, true];
 				_load_pos_1 = _load_pos_1 - 1.5;
