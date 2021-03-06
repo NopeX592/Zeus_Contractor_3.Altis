@@ -1,6 +1,7 @@
 _run_1 = true;
 _run_2 = false;
 task_1_1_skip = false;
+boxes_loaded = 0;
 publicVariableServer "task_1_1_skip";
 
 task_1_1 = player createSimpleTask ["Collect Food and Medical Supplies"];
