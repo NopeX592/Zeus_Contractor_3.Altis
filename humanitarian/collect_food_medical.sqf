@@ -22,7 +22,7 @@ FM_fnc_dropAirdrop = {
 			750,
 			1000,
 			200,
-			4,
+			6,
 			[0,0,-1.2]
 		] call AD_fnc_airDrop;
 };
@@ -44,7 +44,7 @@ while {_run_1} do {
 };
 
 while {_run_2} do {
-	if ((boxes_loaded == 4) || (task_1_1_skip)) then {
+	if ((boxes_loaded == 6) || (task_1_1_skip)) then {
 		task_1_1 setTaskState "Succeeded";
 		["TaskSucceeded",["","Collect Food and Medical Supplies"]] call BIS_fnc_showNotification;
 		_marker_food_medical setMarkerSize [0, 0];

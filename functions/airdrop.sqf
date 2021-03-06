@@ -61,7 +61,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		//Space out drops
 		_centre_distance = dropsite_logic getRelPos [_drop_distance, _direction_e];
 		_objArray pushBack createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
-		_drop_distance = _drop_distance * 1.5;
+		_drop_distance = _drop_distance + 62.5;
 	}; 
 
 	//Set Variables
@@ -70,8 +70,11 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	_unload_pos_2 = 6;
 	_load_pos_1 = 0;
 	_load_pos_2 = 0;
+	_qrf_amount = 0;
 	boxes_loaded = 0;
 	boxes_unloaded = 0;
+	_repetitions = _repetitions - 2;
+	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
 
 	//Create Airdrops
 	{
@@ -154,41 +157,21 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		//Cycle HEMTT
 		_count = _count + 1;
 
-		//Spawn QRFs
-		_randomUnits = selectRandom [4,5,6,7];
-		[
-			getMarkerPos "qrf_spawn_1",
-			position _x,
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
-
-		_randomUnits = selectRandom [4,5,6,7];
-		[
-			getMarkerPos "qrf_spawn_2",
-			position _x,
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
-
-		_randomUnits = selectRandom [4,5,6,7];
-		[
-			getMarkerPos "qrf_spawn_3",
-			position _x,
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
-
-		_randomUnits = selectRandom [4,5,6,7];
-		[
-			getMarkerPos "qrf_spawn_4",
-			position _x,
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
+		//Spawn QRF
+		if (_qrf_amount < _repetitions) then {
+			_qrf_amount = _qrf_amount + 1;
+			_randomStarting = selectRandom _qrf_spawns;
+			_randomUnits = selectRandom [7,8,9,10,11];
+			[
+				getMarkerPos _randomStarting,
+				position _x,
+				_randomUnits,
+				1,
+				independent
+			] call SU_fnc_spawnOPFOR;
+			_newArray = [];
+			{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
+			_qrf_spawns = _newArray;
+		};
 	} forEach _objArray;
 };
