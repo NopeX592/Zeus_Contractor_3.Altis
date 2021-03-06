@@ -80,6 +80,8 @@ waypoint_2_done = false;
 		_wp_getIn setWaypointType "GETIN";
 		_wp_getIn setWaypointSpeed "FULL";
 
+	sleep 10;
+
 	//Order to Target
 	_wp_move = _qrf_group addWaypoint [_location_end, 1];
 		_wp_move setWaypointType "MOVE";

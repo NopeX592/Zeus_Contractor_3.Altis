@@ -154,21 +154,41 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		//Cycle HEMTT
 		_count = _count + 1;
 
-		//Spawn QRF
-		_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
-		_randomStarting = selectRandom _qrf_spawns;
+		//Spawn QRFs
 		_randomUnits = selectRandom [4,5,6,7];
-
 		[
-			getMarkerPos _randomStarting,
+			getMarkerPos "qrf_spawn_1",
 			position _x,
 			_randomUnits,
 			1,
 			independent
 		] call SU_fnc_spawnOPFOR;
 
-		_newArray = [];
-		{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
-		_qrf_spawns = _newArray;
+		_randomUnits = selectRandom [4,5,6,7];
+		[
+			getMarkerPos "qrf_spawn_2",
+			position _x,
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
+
+		_randomUnits = selectRandom [4,5,6,7];
+		[
+			getMarkerPos "qrf_spawn_3",
+			position _x,
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
+
+		_randomUnits = selectRandom [4,5,6,7];
+		[
+			getMarkerPos "qrf_spawn_4",
+			position _x,
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
 	} forEach _objArray;
 };
