@@ -37,6 +37,7 @@ _roles = "<br/>"+
         • Some Technicals<br/>
         • Some mechanized infantry<br/>
         • More ManPADs<br/>
+        • Mine fields are marked on map<br/>
     • Front line markings only accurate for CSAT<br/>
         • Past front line expect CSAT and IND<br/>
         • Within should only be IND<br/>

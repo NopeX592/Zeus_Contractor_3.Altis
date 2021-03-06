@@ -27,6 +27,7 @@ Optional:
             • Some Technicals
 			• Some mechanized infantry
             • More ManPADs
+            • Mine fields are marked on map
 		• Front line markings only accurate for CSAT
             • Past front line expect CSAT and IND
             • Within should only be IND
