@@ -1,8 +1,7 @@
-_run_1 = true;
-_run_2 = false;
-_run_3 = false;
+_run = true;
+briefing = false;
+publicVariable "briefing";
 
-//Diary  by DaVidoSS
 private ["_mission", "_diary_text", "_roles"];
 _mission = toUpper (format ["%1",getText (missionconfigfile >> "onLoadName")]);
 
@@ -87,62 +86,25 @@ waitUntil {!isNull player};
 player createDiaryRecord ["Diary", ["Notes",_roles]];
 player createDiaryRecord ["Diary", [_mission, _diary_text]];
 
-[] spawn {
-sleep 3;
-[
-    screen_lrg_4,
-    getMarkerPos "uav_spawn_3",
-    getMarkerPos "uav_target_3"
-] call CF_fnc_createFeed;
-sleep 1;
-[
-    screen_lrg_3,
-    getMarkerPos "uav_spawn_1",
-    getMarkerPos "uav_target_1"
-] call CF_fnc_createFeed;
-sleep 1;
-[
-    screen_lrg_5,
-    getMarkerPos "uav_spawn_2",
-    getMarkerPos "uav_target_2"
-] call CF_fnc_createFeed;
-};
-/*
-briefing_0_1 = false;
-briefing_0_2 = false;
-briefing_0_3 = false;
-publicVariableServer "briefing_0_1";
-publicVariableServer "briefing_0_2";
-publicVariableServer "briefing_0_3";
-
-
-while {_run_1} do {
-	if (briefing_0_1) then {
+while {_run} do {
+    if (briefing) then {
+        run = false;
         [
-	        screen_lrg_3,
+            screen_lrg_4,
             getMarkerPos "uav_spawn_3",
             getMarkerPos "uav_target_3"
         ] call CF_fnc_createFeed;
-	_run_1 = false;
-	_run_2 = true;
-	};
-};
-
-while {_run_2} do {
-	if (briefing_0_2) then {
+        sleep 10;
         [
-	        screen_lrg_3,
+            screen_lrg_3,
             getMarkerPos "uav_spawn_1",
             getMarkerPos "uav_target_1"
         ] call CF_fnc_createFeed;
-	_run_2 = false;
-	_run_3 = true;
-	};
-};
-
-while {_run_3} do {
-	if (briefing_0_3) then {
-
-	_run_3 = false;
-	};
+        sleep 10;
+        [
+            screen_lrg_5,
+            getMarkerPos "uav_spawn_2",
+            getMarkerPos "uav_target_2"
+        ] call CF_fnc_createFeed;
+    };
 };

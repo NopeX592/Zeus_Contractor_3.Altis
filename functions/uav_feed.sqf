@@ -44,9 +44,8 @@ _cam camSetFov 0.35;
 "uavrtt" setPiPEffect [0];
 
 // adjust cam orientation
-[_uav, _cam] spawn {
-	params ["_uav", "_cam"];
-
+[_cam, _uav] spawn {
+	params ["_cam", "_uav"];
 	while {true} do {
 		_dir = 
 			(_uav selectionPosition "PiP0_pos") 

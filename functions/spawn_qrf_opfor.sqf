@@ -56,7 +56,7 @@ params [
 			_amount = _amount - 3;
 
 			//Spawn Vehicle
-			if (_amount <= 4) then {
+			if (_amount <= 3) then {
 				vehicleSpawn = "O_MRAP_02_hmg_F" createVehicle _location_start;
 				} else {
 				vehicleSpawn = "O_Truck_02_transport_F" createVehicle _location_start;

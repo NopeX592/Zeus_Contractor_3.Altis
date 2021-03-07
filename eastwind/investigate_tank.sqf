@@ -1,11 +1,12 @@
 _run_1 = true;
 _run_2 = false;
-sent_data_tank = false;
 task_2_3_skip = false;
 task_2_3_done = false;
+sent_data_tank = false;
 publicVariableServer "task_2_3_skip";
 publicVariableServer "task_2_3_done";
 publicVariableServer "sent_data_tank";
+
 
 task_2_3 = player createSimpleTask ["Investigate Destroyed Tank", task_2_0];
 	task_2_3 setSimpleTaskDescription ["Investigate the destroyed tanks you may find it in the estimated area.","Investigate Destroyed Tank",""];
@@ -22,8 +23,7 @@ while {_run_1} do {
 		_run_1 = false;
 		_run_2 = true;
 
-		[sent_data_tank]spawn {
-			params ["sent_data_tank"];
+		[]spawn {
 			for "_i" from 5 to 100 step 5 do { 
 				hint str format ["Uploading Data.\n %1%/100%",str _i];
 				sleep 9;
@@ -33,23 +33,22 @@ while {_run_1} do {
 		};
 
 		//Spawn response
-		for "_i" from 1 to 2 step 1 do {
-			_qrf_spawns = [qrf_spawn_12,qrf_spawn_13];
-			_randomStarting = selectRandom _qrf_spawns;
-			_randomUnits = selectRandom [5,6,7,8];
+		_randomUnits = selectRandom [5,6,7,8];
 
-			[
-				getMarkerPos _randomStarting,
-				getMarkerPos "qrf_target_7",
-				_randomUnits,
-				1,
-				independent
-			] call SU_fnc_spawnOPFOR;
-
-			_newArray = [];
-			{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
-			_qrf_spawns = _newArray;
-		};
+		[
+			getMarkerPos "qrf_spawn_12",
+			getMarkerPos "qrf_target_7",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
+		[
+			getMarkerPos "qrf_spawn_12",
+			getMarkerPos "qrf_target_7",
+			_randomUnits,
+			1,
+			east
+		] call SU_fnc_spawnOPFOR;
 	};
 };
 

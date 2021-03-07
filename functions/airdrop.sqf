@@ -146,11 +146,11 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 			if (_count mod 2 == 0) then {
 				[hemtt_collect_1, _box, _load_pos_1, _unload_pos_1] remoteExec ["AD_fnc_createLoad", 0, true];
 				_load_pos_1 = _load_pos_1 - 1.5;
-				_unload_pos_1 = _unload_pos_1 + 1;
+				_unload_pos_1 = _unload_pos_1 + 0.75;
 			} else {
 				[hemtt_collect_2, _box, _load_pos_2, _unload_pos_2] remoteExec ["AD_fnc_createLoad", 0, true];
 				_load_pos_2 = _load_pos_2 - 1.5;
-				_unload_pos_2 = _unload_pos_2 + 1;
+				_unload_pos_2 = _unload_pos_2 + 0.75;
 			};
 		};
 		
@@ -161,7 +161,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		if (_qrf_amount < _repetitions) then {
 			_qrf_amount = _qrf_amount + 1;
 			_randomStarting = selectRandom _qrf_spawns;
-			_randomUnits = selectRandomWeighted [6,0.05,7,0.1,8,0.5,9,0.1,10,0.1,11,0.1,12,0.05];
+			_randomUnits = selectRandomWeighted [6,0.15,7,0.15,8,0.35,9,0.1,10,0.1,11,0.1,12,0.05];
 			[
 				getMarkerPos _randomStarting,
 				position _x,

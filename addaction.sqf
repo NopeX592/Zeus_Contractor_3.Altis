@@ -57,22 +57,22 @@ PB_fnc_action_5 = {
 	};
 
 	//Spawn response
-	for "_i" from 1 to 2 step 1 do {
-		_qrf_spawns = [qrf_spawn_11,qrf_spawn_12];
-		_randomStarting = selectRandom _qrf_spawns;
 		_randomUnits = selectRandom [5,6,7,8];
 
 		[
-			getMarkerPos _randomStarting,
+			getMarkerPos "qrf_spawn_11",
 			getMarkerPos "qrf_target_6",
 			_randomUnits,
 			1,
 			independent
 		] call SU_fnc_spawnOPFOR;
-
-		_newArray = [];
-		{ if (_x != _randomStarting) then {_newArray pushBack _x}; } forEach _qrf_spawns;
-		_qrf_spawns = _newArray;
+		[
+			getMarkerPos "qrf_spawn_12",
+			getMarkerPos "qrf_target_6",
+			_randomUnits,
+			1,
+			independent
+		] call SU_fnc_spawnOPFOR;
 	};
 };
 
@@ -117,9 +117,9 @@ PB_fnc_postbriefing = {
 	intel_gathered_5 = black_box addAction ["Send Data","[] call PB_fnc_action_5;",nil,2.5,true,false,"","true",3,false,"",""];
 
 	//Add Action to tank
-	intel_gathered_6 = tank_intel_1 addAction ["Gather Data","[] call PB_fnc_action_6;",nil,2.5,true,false,"","true",3,false,"",""];
-	intel_gathered_7 = tank_intel_2 addAction ["Gather Data","[] call PB_fnc_action_7;",nil,2.5,true,false,"","true",3,false,"",""];
-	intel_gathered_8 = tank_intel_3 addAction ["Gather Data","[] call PB_fnc_action_8;",nil,2.5,true,false,"","true",3,false,"",""];
+	intel_gathered_6 = tank_intel_1 addAction ["Gather Data","[] call PB_fnc_action_6;",nil,2.5,true,false,"","true",5,false,"",""];
+	intel_gathered_7 = tank_intel_2 addAction ["Gather Data","[] call PB_fnc_action_7;",nil,2.5,true,false,"","true",5,false,"",""];
+	intel_gathered_8 = tank_intel_3 addAction ["Gather Data","[] call PB_fnc_action_8;",nil,2.5,true,false,"","true",5,false,"",""];
 
 	//Add Action to miller
 	intel_gathered_9 = miller addAction ["Gather Data","[] call PB_fnc_action_9;",nil,2.5,true,false,"","true",3,false,"",""];
