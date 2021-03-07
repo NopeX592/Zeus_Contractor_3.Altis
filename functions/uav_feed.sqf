@@ -1,60 +1,43 @@
 /*
-Author: KillzoneKid
-Modified by: Nope.X
-Example:
 [
 	screen_lrg_3,
-	getMarkerPos "uav_spawn_1",
-	getMarkerPos "uav_target_1"
-] call CF_fnc_createFeed;
+	uav_target_1,
+	uav_1_recon
+] spawn CF_fnc_createFeed;
 __________________________________________________________________*/
-// create render surface
 params [
-	["_target_screen", screen_lrg_3, []],
-	["_spawn_pos", [0, 0, 0], ["", objNull, taskNull, locationNull, [], grpNull], [3]],
-	["_target_pos", [0, 0, 0], ["", objNull, taskNull, locationNull, [], grpNull], [3]]
+	["_taget_screen", screen_lrg_3, []],
+	["_target_uav", uav_target_1, []],
+	["_uav", uav_1_recon, []]
 ];
 
-//Set Screen Texture
-_target_screen setObjectTexture [0, "#(argb,2048,2048,1)r2t(uavrtt,1)"];
+uav = _uav;
 
-// create uav and make it fly
-_uav = createVehicle ["O_UAV_01_F", _spawn_pos, [], 0, "FLY"];
-createVehicleCrew _uav;
-_uav lockCameraTo [_target_pos, [0]];
-_uav flyInHeight 150;
+//Select screen
+[_taget_screen, 2] call BIS_fnc_DataTerminalAnimate;   
+_taget_screen setObjectTexture [0, "#(argb,512,512,1)r2t(uavrtt1,1)"];
 
-// add loiter waypoint
-_wp = group _uav addWaypoint [_target_pos, 0];
-_wp setWaypointType "LOITER";
-_wp setWaypointLoiterType "CIRCLE_L";
-_wp setWaypointLoiterRadius 450;
+//Create camera
+cam_1 = "camera" camCreate [0,0,0];
+cam_1 cameraEffect ["Internal", "Back", "uavrtt1"];
+cam_1 camSetFov 0.5;
+cam_1 attachTo [uav, [0,0,0], "PiP0_pos"];
+"uavrtt1" setPiPEffect [0];
 
-// create camera and stream to render surface
-_cam = "camera" camCreate [0,0,0];
-_cam cameraEffect ["Internal", "Back", "uavrtt"];
+//Line up camera
+addMissionEventHandler ["Draw3D", {
+    _dir =
+        (uav selectionPosition "PiP0_pos")
+            vectorFromTo
+        (uav selectionPosition "PiP0_dir");
+    cam_1 setVectorDirAndUp [
+        _dir,
+        _dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
+    ];    
+}];
 
-// attach cam to gunner cam position
-_cam attachTo [_uav, [0,0,0], "PiP0_pos"];
-
-// make it zoom in a little
-_cam camSetFov 0.35;
-
-// switch cam to mode
-"uavrtt" setPiPEffect [0];
-
-// adjust cam orientation
-[_cam, _uav] spawn {
-	params ["_cam", "_uav"];
-	while {true} do {
-		_dir = 
-			(_uav selectionPosition "PiP0_pos") 
-				vectorFromTo 
-			(_uav selectionPosition "PiP0_dir");
-		_cam setVectorDirAndUp [
-			_dir, 
-			_dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
-		];
-		sleep 0.16;
-	};
-};
+//Target UAV camera
+cam_1 camPrepareTarget getpos _target_uav;
+cam_1 camSetTarget _target_uav;
+cam_1 lockCameraTo [_target_uav, [0]];
+cam_1 camCommit 1;

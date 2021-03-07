@@ -25,7 +25,7 @@ Optional:
 		• Enemy Types to expect:
 			• Mostly infantry
             • Some Technicals
-			• Some mechanized infantry
+			• Expect some armour
             • More ManPADs
             • Mine fields are marked on map
 		• Front line markings only accurate for CSAT
@@ -73,6 +73,8 @@ Optional:
         • Supply drop
             • If called in IND will most likely respond
 
+    • Only drone feeds we have
+    • Other drones were shot down
 	• Any questions?
 
 2nd Briefing:
