@@ -1,6 +1,8 @@
 _run = true;
 task_3_1_skip = false;
+task_3_1_done = false;
 publicVariableServer "task_3_1_skip";
+publicVariableServer "task_3_1_done";
 
 task_3_1 = player createSimpleTask ["Destroy Large Antenna", task_3_0];
 	task_3_1 setSimpleTaskDescription ["Destroy the large antenna tower.","Destroy Large Antenna",""];
@@ -18,6 +20,7 @@ while {_run} do {
 		task_3_1 setTaskState "Succeeded";
 		["TaskSucceeded",["","Destroy Large Antenna"]] call BIS_fnc_showNotification;
 		_marker_artillery_lrg setMarkerSize [0, 0];
+		task_3_1_done = true;
 		_run = false;
 	};
 };

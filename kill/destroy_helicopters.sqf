@@ -1,6 +1,8 @@
 _run = true;
 task_3_3_skip = false;
+task_3_3_done = false;
 publicVariableServer "task_3_3_skip";
+publicVariableServer "task_3_3_done";
 
 task_3_3 = player createSimpleTask ["Destroy Enemy Helicopters", task_3_0];
 	task_3_3 setSimpleTaskDescription ["Destroy the enemy helicopters.","Destroy Enemy Helicopters",""];
@@ -18,6 +20,7 @@ while {_run} do {
 		task_3_3 setTaskState "Succeeded";
 		["TaskSucceeded",["","Destroy Enemy Helicopters"]] call BIS_fnc_showNotification;
 		_marker_helicopters setMarkerSize [0, 0];
+		task_3_3_done = true;
 		_run = false;
 
 		//Spawn QRF

@@ -1,6 +1,8 @@
 _run = true;
 task_3_4_skip = false;
+task_3_4_done = false;
 publicVariableServer "task_3_4_skip";
+publicVariableServer "task_3_4_done";
 
 task_3_4 = player createSimpleTask ["Sweep Town Held by Enemies", task_3_0];
 	task_3_4 setSimpleTaskDescription ["Sweep the town of Chalkeia clean of enemies.","Sweep Town Held by Enemies",""];
@@ -24,6 +26,7 @@ while {_run} do {
 		["TaskSucceeded",["","Sweep Town Held by Enemies"]] call BIS_fnc_showNotification;
 		deletevehicle trg_tsk_3_4;
 		_marker_sweep_town setMarkerSize [0, 0];
+		task_3_4_done = true;
 		_run = false;
 
 		//Spawn QRF

@@ -57,8 +57,8 @@ while {_run_2} do {
 		task_2_3 setTaskState "Succeeded";
 		["TaskSucceeded",["","Investigate Destroyed Tank"]] call BIS_fnc_showNotification;
 		_marker_intel setMarkerSize [0, 0];
-		task_2_1_done = true;
-		publicVariableServer "task_2_1_done";
+		task_2_3_done = true;
+		publicVariableServer "task_2_3_done";
 		_run_2 = false;
 	};
 };

@@ -71,7 +71,7 @@ PB_fnc_action_5 = {
 		getMarkerPos "qrf_target_6",
 		_randomUnits,
 		1,
-		independent
+		east
 	] call SU_fnc_spawnOPFOR;
 };
 
