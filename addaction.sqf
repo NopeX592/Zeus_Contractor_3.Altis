@@ -57,23 +57,22 @@ PB_fnc_action_5 = {
 	};
 
 	//Spawn response
-		_randomUnits = selectRandom [5,6,7,8];
+	_randomUnits = selectRandom [5,6,7,8];
 
-		[
-			getMarkerPos "qrf_spawn_11",
-			getMarkerPos "qrf_target_6",
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
-		[
-			getMarkerPos "qrf_spawn_12",
-			getMarkerPos "qrf_target_6",
-			_randomUnits,
-			1,
-			independent
-		] call SU_fnc_spawnOPFOR;
-	};
+	[
+		getMarkerPos "qrf_spawn_11",
+		getMarkerPos "qrf_target_6",
+		_randomUnits,
+		1,
+		independent
+	] call SU_fnc_spawnOPFOR;
+	[
+		getMarkerPos "qrf_spawn_12",
+		getMarkerPos "qrf_target_6",
+		_randomUnits,
+		1,
+		independent
+	] call SU_fnc_spawnOPFOR;
 };
 
 //Intel Tank
