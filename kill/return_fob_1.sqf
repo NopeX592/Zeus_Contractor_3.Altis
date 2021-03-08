@@ -21,6 +21,9 @@ while {_run} do {
 		task_3_5 setTaskState "Succeeded";
 		["TaskSucceeded",["","Return to FOB to get CBRN suits and Briefing"]] call BIS_fnc_showNotification;
 		deletevehicle trg_tsk_3_5;
+		[]execVM "eastwind\kill_miller.sqf";
+		[]execVM "eastwind\recover_eastwind_actual.sqf";
+		[]execVM "eastwind\recover_eastwind_decoy.sqf";
 		task_3_5_done = true;
 		_run = false;
 	};
