@@ -86,10 +86,11 @@ waitUntil {!isNull player};
 player createDiaryRecord ["Diary", ["Briefing 1",_roles]];
 player createDiaryRecord ["Diary", [_mission, _diary_text]];
 
+//Create Drone Feeds
 while {_run} do {
     if (briefing) then {
-        run = false;
-        
+        _run = false;
+
         //Create Feed A
         [
             screen_lrg_3,
@@ -135,7 +136,7 @@ while {_run} do {
         };
 
         sleep 5;
-        
+
         //Create Feed B
         [
             screen_lrg_4,
@@ -181,7 +182,7 @@ while {_run} do {
         };
 
         sleep 5;
-        
+
         //Create Feed C
         [
             screen_lrg_5,

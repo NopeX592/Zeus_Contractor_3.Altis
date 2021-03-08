@@ -1,6 +1,6 @@
 Humanitarian:
-    Secure Food and Medical supplies 🡺 (Dropoff Food and Medical supplies) 🡻
-                                     🡺 Retake Village                      🡻
+    Collect Food and Medical supplies 🡺 Dropoff Food and Medical supplies  🡻
+                                      🡺 Retake Village                     🡻
                                                                             🡻
 Eastwind:                                                                   🡻
     Investigate dead squad       🡻                     🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡺 Capture Eastwind Device 🡺 Return Eastwind Device 🡺 Pettka drives off with Eastwind
@@ -78,3 +78,54 @@ Optional:
 	• Any questions?
 
 2nd Briefing:
+    • Hold checkpoint
+        • Man checkpoint at the Airflied of Almyra
+        • Earlier Team had no CBRN and is infected
+        • Pitch in temporarily
+        • Attacks expected
+        • Kill everyone not leaving the immediate area of the checkpoint
+            • IND controlled area
+            • IND has to keep their people Within
+        • Wait unitl new units arrive
+
+    • Eastwind:
+        • We have analysed the intel you gathered
+        • Miller has defected from NATO
+        • Miller is now allied to IND
+        • He took the Eastwind device he captured a week ago
+        • You escorted the device in the convoy
+        • Your tasks are
+            • Assasinate Miller
+                • Confirm the kill
+                • Search him from intel
+            • Recapture the Eastwind device
+                • We have 2 locations
+                • Marked on map
+                • The site closer to the front line is more likely as easier defendable
+                • Return Eastwind device to this FOB
+
+Intermissions:
+    After Collect:
+        • Dropoff goods in Kalithea
+        • Retake Kalithea from IND
+    
+    After Investigate:
+        • Sweep town of Chalkeia
+        • Destroy stationed Helicopters nearby
+        • Destroy the nearby comms towers
+
+    After Dropoff and Investigate:
+        • RTB for further Briefing
+        • ANd equip CBRN suits
+
+    After Eastwind captured:
+        Pettka:
+            • Our drone shows that you found Eastwind device
+            • RTB with device
+            • Receive Debrief
+        IND:
+            • We lost contact to Miller
+            • Source gave us your frequency
+            • Hide the Eastwind device
+            • Cannot trust you
+            • Won't provide further information
