@@ -4,7 +4,7 @@ Humanitarian:
                                                                             🡻
 Eastwind:                                                                   🡻
     Investigate dead squad       🡻                     🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺🡺 Return to get CBRN and Briefing 🡺 Contain Virus Outbreak 🡺 Capture Eastwind Device 🡺 Return Eastwind Device 🡺 Pettka drives off with Eastwind
-    Investigate downed Blackfish 🡻                     🡹                                                                               🡺 Assasinate Miller       🡺 IND get in touch       🡺 Dropoff Eastwind Device with IND
+    Investigate downed Blackfish 🡻                     🡹                                                                               🡺 Assasinate Miller       🡺 IND get in touch       🡺 Hide Eastwind Device
     Investigate destroyed Tank   🡻                     🡹
                                  🡻 Kill:               🡹
                                  🡺 Sweep Town          🡹
@@ -124,7 +124,7 @@ Intermissions:
             • RTB with device
             • Receive Debrief
         IND:
-            • We lost contact to Miller
+            • Intel indicates Eastwind Device has been moved
             • Source gave us your frequency
             • Hide the Eastwind device
             • Cannot trust you
