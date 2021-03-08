@@ -1,6 +1,8 @@
 []execVM "main_script.sqf";
-[]execVM "briefing.sqf";
+[]execVM "briefing_1.sqf";
+[]execVM "briefing_2.sqf";
 []execVM "addaction.sqf";
+[]execVM "humanitarian\hold_checkpoint.sqf";
 
 if (hasInterface) then {
 	[] spawn {
