@@ -27,6 +27,7 @@ Eastwind:<br/>
     • Miller is now allied to IND<br/>
     • He took the Eastwind device he captured a week ago<br/>
     • You escorted the device in the convoy<br/>
+    • Expect more armor than usual<br/>
     • Your tasks are<br/>
         • Assasinate Miller<br/>
             • Confirm the kill<br/>
