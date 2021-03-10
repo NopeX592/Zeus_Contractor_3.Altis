@@ -61,11 +61,15 @@ Optional:
         • Datais transferred automatically
 
     Kill:
-        • Enemy Units
-            • Should have intel on them
         • Kill Artillery
             • High Priority
-
+        • After done with investigation:
+            • Sweep town of Chalkeia
+            • Destroy stationed Helicopters nearby
+            • Destroy the nearby comms towers
+                • You'll need charges
+                • RTB if necessary
+        
 	Support:
         • Artillery Strikes possible
             • Use only if no other way
@@ -114,6 +118,8 @@ Intermissions:
         • Sweep town of Chalkeia
         • Destroy stationed Helicopters nearby
         • Destroy the nearby comms towers
+            • You'll need charges
+            • RTB if necessary
 
     After Dropoff and Investigate:
         • RTB for further Briefing
