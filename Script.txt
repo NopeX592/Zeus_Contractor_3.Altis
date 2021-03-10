@@ -110,6 +110,10 @@ Optional:
                 • Return Eastwind device to this FOB
 
 Intermissions:
+    After Embark on first mission:
+        //Disable drone feeds
+		removeAllMissionEventHandlers "Draw3D";
+
     After Collect:
         • Dropoff goods in Kalithea
         • Retake Kalithea from IND
