@@ -28,8 +28,8 @@ params [
 //Create Flyby
 _direction_e = _direction_s + 180;
 
-_flyby_start = player getRelPos [_distance, _direction_s];
-_flyby_end = player getRelPos [_distance, _direction_e];
+_flyby_start = squad_leader getRelPos [_distance, _direction_s];
+_flyby_end = squad_leader getRelPos [_distance, _direction_e];
 
 [_flyby_start, _flyby_end, _height, "NORMAL", "B_T_VTOL_01_vehicle_F", west] call BIS_fnc_ambientFlyby;
 
@@ -59,7 +59,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	for "_i" from 1 to _repetitions step 1 do {
 
 		//Space out drops
-		_centre_distance = player getRelPos [_drop_distance, _direction_e];
+		_centre_distance = squad_leader getRelPos [_drop_distance, _direction_e];
 
 		private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
 		private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
@@ -106,8 +106,8 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_randomSide = selectRandom [EAST, independent];
 
 		[
-			player getRelPos [1000, _randomRotation],
-			position player,
+			squad_leader getRelPos [1000, _randomRotation],
+			position squad_leader,
 			_randomUnits,
 			_randomDelay,
 			_randomSide
