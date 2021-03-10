@@ -1,3 +1,5 @@
+
+//Mission Settings
 briefingName = "Operation Greywater Part 3";
 onLoadMissionTime = 1;
 
@@ -15,6 +17,7 @@ class Header
 	maxPlayers = 15;	// maximum number of players the mission supports
 };
 
+//Sounds
 class CfgSounds
 {
 	sounds[] = {};
@@ -23,6 +26,39 @@ class CfgSounds
 		name = "Hardbass";
 		sound[] = {"media\hardbass.ogg", 0.8, 1, 100};
 		titles[] = {1, ""};
+	};
+};
+
+//ORBAT
+class CfgORBAT
+{
+	class 1cmd
+	{
+		id = 1;
+		idType = 2;
+		side = "West";
+		size = "Section";
+		type = "HQ";
+		commander = "Pettka";
+		commanderRank = "Colonel";
+		text = "%1 %2 %3";
+		textShort = "%1 %3";
+
+		class 1sqd
+		{
+			id = 1;
+			idType = 2;
+			side = "West";
+			size = "Squad";
+			type = "MotorizedInfantry";
+			insignia = "media\insignia.paa";
+			colorInsignia[] = {0,0,1,1};
+			commander = "Alex";
+			commanderRank = "Lieutenant";
+			text = "%1 %2 %3";
+			textShort = "%1 %3";
+			assets[] = {"B_MRAP_01_F","B_MRAP_01_hmg_F","B_Truck_01_flatbed_F"};
+		};
 	};
 };
 
