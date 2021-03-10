@@ -124,11 +124,11 @@ PB_fnc_postbriefing = {
 	intel_gathered_9 = miller addAction ["Gather Data","[] call PB_fnc_action_9;",nil,2.5,true,false,"","true",3,false,"",""];
 
 	//Add Sites to screens
-	screen_lrg_3 addAction ["Site A","",nil,2.5,true,false,"","true",1.5,false,"",""];
-	screen_lrg_4 addAction ["Site B","",nil,2.5,true,false,"","true",1.5,false,"",""];
-	screen_lrg_5 addAction ["Site C","",nil,2.5,true,false,"","true",1.5,false,"",""];
-	screen_lrg_6 addAction ["Site D","",nil,2.5,true,false,"","true",1.5,false,"",""];
-	screen_lrg_7 addAction ["Site E","",nil,2.5,true,false,"","true",1.5,false,"",""];
+	screen_site_1 = screen_lrg_3 addAction ["Site A","",nil,2.5,true,false,"","true",2.5,false,"",""];
+	screen_site_2 = screen_lrg_4 addAction ["Site B","",nil,2.5,true,false,"","true",2.5,false,"",""];
+	screen_site_3 = screen_lrg_5 addAction ["Site C","",nil,2.5,true,false,"","true",2.5,false,"",""];
+	screen_site_4 = screen_lrg_6 addAction ["Site D","",nil,2.5,true,false,"","true",2.5,false,"",""];
+	screen_site_5 = screen_lrg_7 addAction ["Site E","",nil,2.5,true,false,"","true",2.5,false,"",""];
 };
 
 sleep 1;
