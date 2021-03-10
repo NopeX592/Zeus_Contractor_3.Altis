@@ -270,8 +270,6 @@ while {_run} do {
                 ];    
             }];
 
-            removeMissionEventHandler 
-
             //Target UAV camera
             cam_4 camPrepareTarget getpos _target_uav;
             cam_4 camSetTarget _target_uav;
@@ -289,7 +287,7 @@ while {_run} do {
         ] spawn {
             params [
                 ["_taget_screen", screen_lrg_7, []],
-                ["_target_uav", uav_target_5, []],
+                ["_target_uav", helicopter_2, []],
                 ["_uav_5", uav_recon_5, []]
             ];
 
