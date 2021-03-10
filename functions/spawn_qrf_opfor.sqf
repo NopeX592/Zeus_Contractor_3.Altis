@@ -77,7 +77,7 @@ params [
 	_wp_move_1 = _qrf_group addWaypoint [_location_end, 1];
 		_wp_move_1 setWaypointType 'MOVE';
 		_wp_move_1 setWaypointSpeed 'FULL';
-		[_qrf_group, 1] setWaypointCompletionRadius 75;
+		[_qrf_group, 1] setWaypointCompletionRadius 150;
 
 	//Order Get Out
 	_wp_getOut = _qrf_group addWaypoint [_location_end, 2];

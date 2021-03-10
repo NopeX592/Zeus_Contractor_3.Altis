@@ -162,9 +162,13 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 			_qrf_amount = _qrf_amount + 1;
 			_randomStarting = selectRandom _qrf_spawns;
 			_randomUnits = selectRandomWeighted [6,0.15,7,0.15,8,0.35,9,0.1,10,0.1,11,0.1,12,0.05];
+
+			//Get target position
+			_position_target_air = position _x;
+			_position_target_air set [2, 0];
 			[
 				getMarkerPos _randomStarting,
-				position _x,
+				_position_target_air,
 				_randomUnits,
 				1,
 				independent
