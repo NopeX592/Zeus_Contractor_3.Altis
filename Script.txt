@@ -112,7 +112,7 @@ Optional:
 Intermissions:
     After Embark on first mission:
         //Disable drone feeds
-		removeAllMissionEventHandlers "Draw3D";
+		drone_feed_off = true;
 
     After Collect:
         • Dropoff goods in Kalithea

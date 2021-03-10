@@ -1,6 +1,9 @@
-_run = true;
-briefing = false;
-publicVariable "briefing";
+_run_1 = true;
+_run_2 = true;
+drone_feed_on = false;
+drone_feed_off = false;
+publicVariable "drone_feed_on";
+publicVariable "drone_feed_off";
 
 private ["_mission", "_diary_text", "_roles"];
 _mission = toUpper (format ["%1",getText (missionconfigfile >> "onLoadName")]);
@@ -91,9 +94,12 @@ player createDiaryRecord ["Diary", ["Briefing 1",_roles]];
 player createDiaryRecord ["Diary", [_mission, _diary_text]];
 
 //Create Drone Feeds
-while {_run} do {
-    if (briefing) then {
-        _run = false;
+while {_run_1} do {
+    sleep 1;
+
+    if (drone_feed_on) then {
+        _run_1 = false;
+        _run_2 = true;
 
         //Create Feed A - Humanitarian
         [
@@ -322,5 +328,16 @@ while {_run} do {
             cam_5 lockCameraTo [_target_uav, [0]];
             cam_5 camCommit 1;
         };
+    };
+};
+
+while {_run_2} do {
+    sleep 1;
+
+    if (drone_feed_off) then {
+        _run_2 = false;
+        
+        //Remove event handler Draw3D
+        removeAllMissionEventHandlers "Draw3D";
     };
 };
