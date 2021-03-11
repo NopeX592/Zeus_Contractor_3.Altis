@@ -59,6 +59,38 @@ class CfgORBAT
 			textShort = "%1 %3";
 			assets[] = {"B_MRAP_01_F","B_MRAP_01_hmg_F","B_Truck_01_flatbed_F"};
 		};
+		
+		class 2sqd
+		{
+			id = 1;
+			idType = 2;
+			side = "West";
+			size = "Squad";
+			type = "AttackRecon";
+			insignia = "media\insignia.paa";
+			colorInsignia[] = {0,0,1,1};
+			commander = "Peter";
+			commanderRank = "Lieutenant";
+			text = "%1 %2 %3";
+			textShort = "%1 %3";
+			assets[] = {"B_MRAP_01_F","C_Offroad_01_comms_F"};
+		};
+
+		class 3sqd
+		{
+			id = 1;
+			idType = 2;
+			side = "West";
+			size = "Squad";
+			type = "CombatAviation";
+			insignia = "media\insignia.paa";
+			colorInsignia[] = {0,0,1,1};
+			commander = "Ava";
+			commanderRank = "Lieutenant";
+			text = "%1 %2 %3";
+			textShort = "%1 %3";
+			assets[] = {"I_Heli_light_03_F"};
+		};
 	};
 };
 
