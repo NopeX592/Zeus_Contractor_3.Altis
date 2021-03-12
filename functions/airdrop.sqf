@@ -115,19 +115,16 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 
 		PB_fnc_action_load = {
 			params ["_hemtt", "_box", "_load_pos", "_unload_pos", "_box_loaded"];
-			hint "action load reached";
 			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
 			_box attachTo [_hemtt, [0, _load_pos, -0.18]];
 			boxes_loaded = boxes_loaded + 1;
 			publicVariable 'boxes_loaded';
 			[_box, _unload_pos] remoteExec ['AD_fnc_createUnLoad', 0, true];
 			[_box, _box_loaded] remoteExec ['removeAction', 0, true];
-			hint "action load end reached";
 		};
 
 		PB_fnc_action_unload = {
 			params ['_box', '_unload_pos', "_box_unloaded"];
-			hint "action unload reached";
 			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
 			detach _box;
 			_unload_box = _box getRelPos [_unload_pos, 180];
@@ -135,7 +132,6 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 			boxes_unloaded = boxes_unloaded + 1;
 			publicVariable 'boxes_unloaded';
 			[_box, _box_unloaded] remoteExec ['removeAction', 0, true];
-			hint "action unload end reached";
 		};
 
 		AD_fnc_createLoad = {
