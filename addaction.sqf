@@ -100,6 +100,7 @@ PB_fnc_action_8 = {
 //Intel Miller
 PB_fnc_action_9 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
+	player createDiaryRecord ["Intel", ["Title", "<img image='media\dropoff.paa'/>"]];
 	[miller, intel_gathered_9] remoteExec ["removeAction", 0, true];
 };
 
@@ -121,7 +122,7 @@ PB_fnc_postbriefing = {
 	intel_gathered_8 = tank_intel_3 addAction ["Gather Data","[] call PB_fnc_action_8;",nil,2.5,true,false,"","true",5,false,"",""];
 
 	//Add Action to miller
-	intel_gathered_9 = miller addAction ["Gather Data","[] call PB_fnc_action_9;",nil,2.5,true,false,"","true",3,false,"",""];
+	intel_gathered_9 = miller addAction ["Add Diary Entry","[] call PB_fnc_action_9;",nil,2.5,true,false,"","true",3,false,"",""];
 
 	//Add Sites to screens
 	screen_site_1 = screen_lrg_3 addAction ["Site A","",nil,2.5,true,false,"","true",2.5,false,"",""];
@@ -129,6 +130,9 @@ PB_fnc_postbriefing = {
 	screen_site_3 = screen_lrg_5 addAction ["Site C","",nil,2.5,true,false,"","true",2.5,false,"",""];
 	screen_site_4 = screen_lrg_6 addAction ["Site D","",nil,2.5,true,false,"","true",2.5,false,"",""];
 	screen_site_5 = screen_lrg_7 addAction ["Site E","",nil,2.5,true,false,"","true",2.5,false,"",""];
+
+	//Add Action to Strategic Map
+	board_strat_1 = board_map_1 addAction ["Open Strategic Map","[strat_map] spawn BIS_fnc_moduleStrategicMapOpen;",nil,2.5,true,false,"","true",2.5,false,"",""];
 };
 
 sleep 1;
