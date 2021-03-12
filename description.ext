@@ -35,9 +35,9 @@ class CfgORBAT
 	class 1cmd
 	{
 		id = 1;
-		idType = 2;
+		idType = 1;
 		side = "West";
-		size = "Section";
+		size = "Regiment";
 		type = "HQ";
 		commander = "Pettka";
 		commanderRank = "Colonel";
@@ -46,8 +46,8 @@ class CfgORBAT
 
 		class 1sqd
 		{
-			id = 1;
-			idType = 2;
+			id = 2;
+			idType = 1;
 			side = "West";
 			size = "Squad";
 			type = "MotorizedInfantry";
@@ -62,8 +62,8 @@ class CfgORBAT
 		
 		class 2sqd
 		{
-			id = 1;
-			idType = 2;
+			id = 3;
+			idType = 1;
 			side = "West";
 			size = "Squad";
 			type = "AttackRecon";
@@ -78,8 +78,8 @@ class CfgORBAT
 
 		class 3sqd
 		{
-			id = 1;
-			idType = 2;
+			id = 4;
+			idType = 1;
 			side = "West";
 			size = "Squad";
 			type = "CombatAviation";
@@ -90,6 +90,60 @@ class CfgORBAT
 			text = "%1 %2 %3";
 			textShort = "%1 %3";
 			assets[] = {"I_Heli_light_03_F"};
+		};
+
+		class 4sqd
+		{
+			id = 5;
+			idType = 1;
+			side = "West";
+			size = "Division";
+			type = "GeneralSupport";
+			commander = "Cuntington";
+			commanderRank = "Lieutenant";
+			text = "%1 %2 %3";
+			textShort = "%1 %3";
+
+			class 1art
+			{
+				id = 6;
+				idType = 1;
+				side = "West";
+				size = "Squad";
+				type = "Artillery";
+				commander = "Cuntington";
+				commanderRank = "Lieutenant";
+				text = "%1 %2 %3";
+				textShort = "%1 %3";
+				assets[] = {"B_MBT_01_arty_F"};
+			};
+
+			class 2art
+			{
+				id = 7;
+				idType = 1;
+				side = "West";
+				size = "Squad";
+				type = "Mortar";
+				commander = "Cuntington";
+				commanderRank = "Lieutenant";
+				text = "%1 %2 %3";
+				textShort = "%1 %3";
+				assets[] = {"B_T_Mortar_01_F"};
+			};
+
+			class 1drp
+			{
+				id = 8;
+				idType = 1;
+				side = "West";
+				size = "Squad";
+				type = "AviationSupport";
+				commander = "Cuntington";
+				commanderRank = "Lieutenant";
+				text = "%1 %2 %3";
+				textShort = "%1 %3";
+			};
 		};
 	};
 };
