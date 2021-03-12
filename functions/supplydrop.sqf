@@ -6,12 +6,13 @@ Example:
 	"B_supplyCrate_F",
 	position player,
 	125,
-	750,
+	500,
 	1000,
 	200,
 	2,
-	[0,0,-1.2],
-	WEST
+	[0,0,-1.2]
+	WEST,
+	
 ] call AD_fnc_supplyDrop;
 __________________________________________________________________*/
 params [
@@ -21,7 +22,7 @@ params [
 	["_height", 300, [0]],
 	["_distance", 750, [0]],
 	["_direction_s", 35, [0]],
-	["_repetitions", 4, [0]],
+	["_repetitions", 2, [0]],
 	["_attachTo", [0, 0, -1.2], [[]], [3]]
 ];
 
@@ -55,64 +56,62 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 
 	sleep 9.75;
 
-	//Repeat
-	for "_i" from 1 to _repetitions step 1 do {
+	//Space out drops
+	_centre_distance = squad_leader getRelPos [_drop_distance, _direction_e];
 
-		//Space out drops
-		_centre_distance = squad_leader getRelPos [_drop_distance, _direction_e];
+	private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
+	private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
 
-		private _obj = createVehicle [_object, _centre_distance vectorAdd [0, 0, _height], [], 0, "NONE"]; 
-		private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
+	_para setDir getDir _obj;
+	_para setPos getPos _obj;
+	_obj lock false;
+	_obj attachTo [_para, _attachTo];
 
-		_para setDir getDir _obj;
-		_para setPos getPos _obj;
-		_obj lock false;
-		_obj attachTo [_para, _attachTo];
-
-		[_obj, _para] spawn {
-			params ["_obj","_para"];
-				
-			waitUntil {
-				sleep 0.01;
-				((position _obj) select 2) < 2 
-				|| 
-				isNull _para 
-				|| 
-				(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
-			};
-				
-			_para disableCollisionWith _obj;
-			_obj setVectorUp [0,0,1];
-			_obj setVelocity [0,0,0];
-			detach _obj;
-				
-			if (!isNull _para) then {deleteVehicle _para};
-
-			(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
-
-			//Attach Smoke
-			_smoke = "Green";
-			_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-			_smoke attachTo [_obj, [0,0,0]];
+	[_obj, _para] spawn {
+		params ["_obj","_para"];
+			
+		waitUntil {
+			sleep 0.01;
+			((position _obj) select 2) < 2 
+			|| 
+			isNull _para 
+			|| 
+			(count (lineIntersectsWith [getPosASL _obj, (getPosASL _obj) vectorAdd [0, 0, -0.5], _obj, _para])) > 0
 		};
-		_drop_distance = _drop_distance * 1.5
-	};
+			
+		_para disableCollisionWith _obj;
+		_obj setVectorUp [0,0,1];
+		_obj setVelocity [0,0,0];
+		detach _obj;
+			
+		if (!isNull _para) then {deleteVehicle _para};
 
-	//Spawn QRF
-	for "_i" from 1 to _repetitions step 1 do {
-		_randomRotation = selectRandom [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345,360];
-		_randomDelay = selectRandom [30,40,50];
-		_randomUnits = selectRandom [5,6,7];
-		_randomSide = selectRandom [EAST, independent];
+		(format ["A supply drop has touched down, grid %1.", mapGridPosition getPosATL _obj]) remoteExec ["systemChat", 0, false]; 
 
-		[
-			squad_leader getRelPos [1000, _randomRotation],
-			position squad_leader,
-			_randomUnits,
-			_randomDelay,
-			_randomSide
-		] call SU_fnc_spawnOPFOR;
+		//Attach Smoke
+		_smoke = "Green";
+		_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+		_smoke attachTo [_obj, [0,0,0]];
+
+		//Add Arsenal
+		//["AmmoboxInit", _obj] spawn BIS_fnc_arsenal;
+		[ _obj, ["class_1","class_2"], false, true ] call BIS_fnc_addVirtualMagazineCargo;
 	};
+	_drop_distance = _drop_distance * 1.5
 };
 
-_obj 
+//Spawn QRF
+for "_i" from 1 to _repetitions step 1 do {
+	_randomRotation = selectRandom [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345,360];
+	_randomDelay = selectRandom [30,40,50];
+	_randomUnits = selectRandom [5,6,7];
+	_randomSide = selectRandom [EAST, independent];
+
+	[
+		squad_leader getRelPos [1000, _randomRotation],
+		position squad_leader,
+		_randomUnits,
+		_randomDelay,
+		_randomSide
+	] call SU_fnc_spawnOPFOR;
+};
