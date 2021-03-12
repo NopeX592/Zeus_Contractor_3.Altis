@@ -111,17 +111,39 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		};
 
 		//Add Action
+		_box = _x;
+
+		PB_fnc_action_load = {
+			params ["_hemtt", "_box", "_load_pos", "_unload_pos", "_box_loaded"];
+			hint "action load reached";
+			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+			_box attachTo [_hemtt, [0, _load_pos, -0.18]];
+			boxes_loaded = boxes_loaded + 1;
+			publicVariable 'boxes_loaded';
+			[_box, _unload_pos] remoteExec ['AD_fnc_createUnLoad', 0, true];
+			[_box, _box_loaded] remoteExec ['removeAction', 0, true];
+			hint "action load end reached";
+		};
+
+		PB_fnc_action_unload = {
+			params ['_box', '_unload_pos', "_box_unloaded"];
+			hint "action unload reached";
+			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+			detach _box;
+			_unload_box = _box getRelPos [_unload_pos, 180];
+			_box setPos _unload_box;
+			boxes_unloaded = boxes_unloaded + 1;
+			publicVariable 'boxes_unloaded';
+			[_box, _box_unloaded] remoteExec ['removeAction', 0, true];
+			hint "action unload end reached";
+		};
+
 		AD_fnc_createLoad = {
 			params ["_hemtt", "_box", "_load_pos", "_unload_pos"];
 			_box_loaded = _box addAction ["Load Goods onto HEMTT","
 				params ['_box', '_player', '_box_loaded', '_arguments'];
 				_arguments params ['_hemtt', '_load_pos', '_unload_pos'];
-				player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
-				_box attachTo [_hemtt, [0, _load_pos, -0.18]];
-				boxes_loaded = boxes_loaded + 1;
-				publicVariable 'boxes_loaded';
-				[_box, _unload_pos] remoteExec ['AD_fnc_createUnLoad', 0, true];
-				[_box, _box_loaded] remoteExec ['removeAction', 0, true];
+				[_hemtt, _box, _load_pos, _unload_pos, _box_loaded] call PB_fnc_action_load;
 			",[_hemtt, _load_pos, _unload_pos],1,true,false,"","true",3,false,"",""];
 		};
 
@@ -130,17 +152,9 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 			_box_unloaded = _box addAction ["Unload Goods","
 				params ['_box', '_player', '_box_unloaded', '_arguments'];
 				_arguments params ['_unload_pos'];
-				player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
-				detach _box;
-				_unload_box = _box getRelPos [_unload_pos, 180];
-				_box setPos _unload_box;
-				boxes_unloaded = boxes_unloaded + 1;
-				publicVariable 'boxes_unloaded';
-				[_box, _box_unloaded] remoteExec ['removeAction', 0, true];
+				[_box, _unload_pos, _box_unloaded] call PB_fnc_action_unload;
 			",_unload_pos,1,true,false,"","true",5,false,"",""];
 		};
-
-		_box = _x;
 
 		if (isServer) then {
 			if (_count mod 2 == 0) then {

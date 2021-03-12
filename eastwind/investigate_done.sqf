@@ -2,7 +2,7 @@ _run = true;
 task_2_0_skip = false;
 publicVariableServer "task_2_0_skip";
 
-task_2_0 = player createSimpleTask ["Investigatation"];
+task_2_0 = player createSimpleTask ["Investigation"];
 	task_2_0 setSimpleTaskDescription ["Investigate the downed blackfish and the killed squad.","Investigatation",""];
 	task_2_0 setSimpleTaskType "upload";
 	task_2_0 setTaskState "Created";
