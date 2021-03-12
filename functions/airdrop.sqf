@@ -78,7 +78,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 
 	//Create Airdrops
 	{
-		private _para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
+		_para = createVehicle ["B_parachute_02_F", [0,0,0], [], 0, "FLY"];
 
 		_para setDir getDir _x;
 		_para setPos getPos _x;
