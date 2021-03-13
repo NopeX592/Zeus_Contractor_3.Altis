@@ -23,7 +23,7 @@ while {_run_1} do {
 	if (triggerActivated trg_tsk_1_1_1) then {
 		trg_tsk_1_1_2 = createTrigger ["EmptyDetector", getMarkerPos "dropsite"];
 			trg_tsk_1_1_2 setTriggerActivation ["JULIET", "PRESENT", false];
-			trg_tsk_1_1_2 setTriggerStatements ["this","['Land_PaperBox_01_small_stacked_F', position player, 125, 750, 1000, 200, 6, [0,0,-1.2]] call AD_fnc_airDrop;",""];
+			trg_tsk_1_1_2 setTriggerStatements ["this","['Land_PaperBox_01_small_stacked_F', position player, 125, 500, 1000, 200, 6, [0,0,-1.2]] call AD_fnc_airDrop;",""];
 			trg_tsk_1_1_2 setTriggerText "Call in the IDAP supplies";
 			_run_1 = false;
 			_run_2 = true;
