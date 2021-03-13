@@ -104,7 +104,7 @@ PB_fnc_action_8 = {
 //Intel Miller
 PB_fnc_action_9 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
-	player createDiaryRecord ["Intel", ["Title", "<img image='media\dropoff.paa'/>"]];
+	player createDiaryRecord ["Intel", ["Title", "<img image='media\evidence.paa'/>"]];
 	[miller, intel_gathered_9] remoteExec ["BIS_fnc_holdActionRemove", 0, true];
 };
 
