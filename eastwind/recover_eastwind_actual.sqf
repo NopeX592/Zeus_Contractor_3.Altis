@@ -11,7 +11,7 @@ task_3_8 = player createSimpleTask ["Recapture Eastwind Device"];
 
 _marker_eastwind_actual = createMarker ["Recapture Eastwind Device", getMarkerPos "eastwind_actual"];
 	_marker_eastwind_actual setMarkerShape "ELLIPSE";
-	_marker_eastwind_actual setMarkerSize [250, 250];
+	_marker_eastwind_actual setMarkerSize [150, 150];
 
 while {_run} do {
 	if ((player in eastwind_device) || (task_3_8_skip)) then {

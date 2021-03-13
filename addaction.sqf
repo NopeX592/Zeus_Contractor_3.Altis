@@ -1,10 +1,14 @@
 _run = true;
 gathered_squad = 0;
 gathered_tank = 0;
+boxes_loaded = 0;
+boxes_unloaded = 0;
 sent_data_blackfish = false;
 publicVariable "gathered_squad";
 publicVariable "gathered_tank";
 publicVariable "sent_data_blackfish";
+publicVariable "boxes_loaded";
+publicVariable "boxes_unloaded";
 
 PB_fnc_hardbass = {
 	blyat_mobile say3D "Hardbass";
@@ -80,7 +84,7 @@ PB_fnc_action_6 = {
 	player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 	gathered_tank = gathered_tank + 1;
 	publicVariable "gathered_tank";
-	[tank_intel_1, intel_gathered6] remoteExec ["BIS_fnc_holdActionRemove", 0, true];
+	[tank_intel_1, intel_gathered_6] remoteExec ["BIS_fnc_holdActionRemove", 0, true];
 };
 
 PB_fnc_action_7 = {
@@ -133,6 +137,20 @@ PB_fnc_postbriefing = {
 
 	//Add Action to Strategic Map
 	[board_map_1, "Open Strategic Map", "\a3\ui_f_oldman\data\IGUI\Cfg\holdactions\map_ca.paa", "\a3\ui_f_oldman\data\IGUI\Cfg\holdactions\map_ca.paa", "_this distance _target < 3", "_caller distance _target < 3", {}, {}, {[strat_map] spawn BIS_fnc_moduleStrategicMapOpen}, {}, [], 1, nil, false, false] call BIS_fnc_holdActionAdd;
+
+	//Add Action to Boxes
+	_box_loaded_1 = hemtt_cargo_1 addAction ["Load Goods onto HEMTT","hemtt_cargo_1 attachTo [hemtt_collect_1, [0, 0, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_1, _box_loaded_1] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_1 = hemtt_cargo_1 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_1;_unload_box = hemtt_cargo_1 getRelPos [6, 180];hemtt_cargo_1 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_1, _box_unloaded_1] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
+	_box_loaded_2 = hemtt_cargo_2 addAction ["Load Goods onto HEMTT","hemtt_cargo_2 attachTo [hemtt_collect_1, [0, -1.5, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_2, _box_loaded_2] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_2 = hemtt_cargo_2 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_1;_unload_box = hemtt_cargo_1 getRelPos [6.75, 180];hemtt_cargo_2 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_2, _box_unloaded_2] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
+	_box_loaded_3 = hemtt_cargo_3 addAction ["Load Goods onto HEMTT","hemtt_cargo_3 attachTo [hemtt_collect_1, [0, -3, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_3, _box_loaded_3] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_3 = hemtt_cargo_3 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_1;_unload_box = hemtt_cargo_1 getRelPos [7.5, 180];hemtt_cargo_3 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_3, _box_unloaded_3] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
+	_box_loaded_4 = hemtt_cargo_4 addAction ["Load Goods onto HEMTT","hemtt_cargo_4 attachTo [hemtt_collect_2, [0, 0, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_4, _box_loaded_4] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_4 = hemtt_cargo_4 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_2;_unload_box = hemtt_cargo_2 getRelPos [6, 180];hemtt_cargo_4 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_4, _box_unloaded_4] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
+	_box_loaded_5 = hemtt_cargo_5 addAction ["Load Goods onto HEMTT","hemtt_cargo_5 attachTo [hemtt_collect_2, [0, -1.5, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_5, _box_loaded_5] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_5 = hemtt_cargo_5 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_2;_unload_box = hemtt_cargo_2 getRelPos [6.75, 180];hemtt_cargo_5 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_5, _box_unloaded_5] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
+	_box_loaded_6 = hemtt_cargo_6 addAction ["Load Goods onto HEMTT","hemtt_cargo_6 attachTo [hemtt_collect_2, [0, -3, -0.18]];player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';boxes_loaded = boxes_loaded + 1;publicVariable 'boxes_loaded';[hemtt_cargo_6, _box_loaded_6] remoteExec ['removeAction', 0, true];",nil,1,true,false,"","true",3,false,"",""];
+	_box_unloaded_6 = hemtt_cargo_6 addAction ["Unload Goods","player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';detach hemtt_cargo_2;_unload_box = hemtt_cargo_2 getRelPos [7.5, 180];hemtt_cargo_6 setPos _unload_box;boxes_unloaded = boxes_unloaded + 1;publicVariable 'boxes_unloaded';[hemtt_cargo_6, _box_unloaded_6] remoteExec ['removeAction', 0, true]",nil,1,true,false,"","true",5,false,"",""];
 };
 
 sleep 1;

@@ -4,7 +4,7 @@ Modified by: Nope.X
 Example:
 [
 	"B_supplyCrate_F",
-	position player,
+	position squad_leader,
 	125,
 	500,
 	1000,
@@ -12,7 +12,6 @@ Example:
 	2,
 	[0,0,-1.2]
 	WEST,
-	
 ] call AD_fnc_supplyDrop;
 __________________________________________________________________*/
 params [
@@ -94,8 +93,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_smoke attachTo [_obj, [0,0,0]];
 
 		//Add Arsenal
-		//["AmmoboxInit", _obj] spawn BIS_fnc_arsenal;
-		[ _obj, ["class_1","class_2"], false, true ] call BIS_fnc_addVirtualMagazineCargo;
+		[ _obj, ["class_1","class_2"], false, true ] remoteExec ["BIS_fnc_addVirtualMagazineCargo", 0, true]
 	};
 	_drop_distance = _drop_distance * 1.5
 };

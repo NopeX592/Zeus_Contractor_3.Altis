@@ -16,17 +16,17 @@ task_3_7 = player createSimpleTask ["Recapture Eastwind Device"];
 
 _marker_eastwind_decoy = createMarker ["Recapture Eastwind Device", getMarkerPos "eastwind_decoy"];
 	_marker_eastwind_decoy setMarkerShape "ELLIPSE";
-	_marker_eastwind_decoy setMarkerSize [250, 250];
+	_marker_eastwind_decoy setMarkerSize [150, 150];
 
 trg_tsk_3_7_1 = createTrigger ["EmptyDetector", getMarkerPos "eastwind_decoy"];
-	trg_tsk_3_7_1 setTriggerArea [75, 75, 100, false];
+	trg_tsk_3_7_1 setTriggerArea [150, 150, 100, false];
 	trg_tsk_3_7_1 setTriggerActivation ["ANYPLAYER", "PRESENT", false];
 	trg_tsk_3_7_1 setTriggerStatements ["this","",""];
 
 while {_run_1} do {
 	if (triggerActivated trg_tsk_3_7_1) then {
 		trg_tsk_3_7_2 = createTrigger ["EmptyDetector", getMarkerPos "eastwind_decoy"];
-			trg_tsk_3_7_2 setTriggerActivation ["JULIET", "PRESENT", false];
+			trg_tsk_3_7_2 setTriggerActivation ["ALPHA", "PRESENT", false];
 			trg_tsk_3_7_2 setTriggerStatements ["this","eastwind_not = true;",""];
 			trg_tsk_3_7_2 setTriggerText "Report Eastwind not present";
 			_run_1 = false;

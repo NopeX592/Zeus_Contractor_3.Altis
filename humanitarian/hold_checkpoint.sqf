@@ -35,7 +35,7 @@ while {_run_1} do {
 				deleteVehicle trg_tsk_1_4;
 				task_1_4_done = true;
 				publicVariableServer "task_1_4_done";
-				_run = false;
+				_run_2 = false;
 			};
 		};
 	};

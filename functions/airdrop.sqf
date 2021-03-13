@@ -65,7 +65,7 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	}; 
 
 	//Set Variables
-	_count = 1;
+	_count = 0;
 	_unload_pos_1 = 6;
 	_unload_pos_2 = 6;
 	_load_pos_1 = 0;
@@ -75,6 +75,10 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 	boxes_unloaded = 0;
 	_repetitions = _repetitions - 2;
 	_qrf_spawns = ["qrf_spawn_1","qrf_spawn_2","qrf_spawn_3","qrf_spawn_4"];
+	publicVariable "boxes_loaded";
+	publicVariable "boxes_unloaded";
+	_playerArray = allPlayers;
+	_boxes_preset = [hemtt_cargo_1, hemtt_cargo_2, hemtt_cargo_3, hemtt_cargo_4, hemtt_cargo_5, hemtt_cargo_6];
 
 	//Create Airdrops
 	{
@@ -85,59 +89,67 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		_x lock false;
 		_x attachTo [_para, _attachTo];
 
-		[_x, _para] spawn {
-			params ["_x","_para"];
-				
-			waitUntil {
-				sleep 0.01;
-				((position _x) select 2) < 2 
-				|| 
-				isNull _para 
-				|| 
-				(count (lineIntersectsWith [getPosASL _x, (getPosASL _x) vectorAdd [0, 0, -0.5], _x, _para])) > 0
-			};
-				
-			_para disableCollisionWith _x;
-			_x setVectorUp [0,0,1];
-			_x setVelocity [0,0,0];
-			detach _x;
-				
-			if (!isNull _para) then {deleteVehicle _para};
+		        [_x, _para, _count, _boxes_preset] spawn {
+            params ["_x","_para", "_count", "_boxes_preset"];
+                
+            waitUntil {
+                sleep 0.01;
+                ((position _x) select 2) < 2 
+                || 
+                isNull _para 
+                || 
+                (count (lineIntersectsWith [getPosASL _x, (getPosASL _x) vectorAdd [0, 0, -0.5], _x, _para])) > 0
+            };
+                
+            _para disableCollisionWith _x;
+            _x setVectorUp [0,0,1];
+            _x setVelocity [0,0,0];
+            detach _x;
+                
+            if (!isNull _para) then {deleteVehicle _para};
 
-			//Attach Smoke
-			_smoke = "Orange";
-			_smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
-			_smoke attachTo [_x, [0,0,0]];
-		};
+            //Attach Smoke
+            _smoke = "Orange";
+            _smoke = createVehicle ["SmokeShell"+_smoke, [0,0,0], [], 0 , ""];
+            _smoke attachTo [_x, [0,0,0]];
 
+			//Set Box Positions
+            _position = getPosASL _x;
+			deleteVehicle _x;
+            _boxes_preset select _count setPosASL _position
+        };
+            
+        _count = _count + 1;
+
+		/*
 		//Add Action
 		_box = _x;
 
 		PB_fnc_action_load = {
 			params ["_hemtt", "_box", "_load_pos", "_unload_pos", "_box_loaded"];
-			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+			player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 			_box attachTo [_hemtt, [0, _load_pos, -0.18]];
 			boxes_loaded = boxes_loaded + 1;
-			publicVariable 'boxes_loaded';
-			[_box, _unload_pos] remoteExec ['AD_fnc_createUnLoad', 0, true];
-			[_box, _box_loaded] remoteExec ['removeAction', 0, true];
+			publicVariable "boxes_loaded";
+			[_box, _unload_pos] remoteExec ["AD_fnc_createUnLoad", 0, true];
+			[_box, _box_loaded] remoteExec ["removeAction", 0, true];
 		};
 
 		PB_fnc_action_unload = {
-			params ['_box', '_unload_pos', "_box_unloaded"];
-			player playMove 'AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon';
+			params ["_box", "_unload_pos", "_box_unloaded"];
+			player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 			detach _box;
 			_unload_box = _box getRelPos [_unload_pos, 180];
 			_box setPos _unload_box;
 			boxes_unloaded = boxes_unloaded + 1;
-			publicVariable 'boxes_unloaded';
-			[_box, _box_unloaded] remoteExec ['removeAction', 0, true];
+			publicVariable "boxes_unloaded";
+			[_box, _box_unloaded] remoteExec ["removeAction", 0, true];
 		};
 
 		AD_fnc_createLoad = {
 			params ["_hemtt", "_box", "_load_pos", "_unload_pos"];
 			_box_loaded = _box addAction ["Load Goods onto HEMTT","
-				params ['_box', '_player', '_box_loaded', '_arguments'];
+				params ['_box', 'player', '_box_loaded', '_arguments'];
 				_arguments params ['_hemtt', '_load_pos', '_unload_pos'];
 				[_hemtt, _box, _load_pos, _unload_pos, _box_loaded] call PB_fnc_action_load;
 			",[_hemtt, _load_pos, _unload_pos],1,true,false,"","true",3,false,"",""];
@@ -146,26 +158,25 @@ if (!(isClass (configfile >> "cfgVehicles" >> _object)) || _centre isEqualTo [0,
 		AD_fnc_createUnLoad = {
 			params ['_box', '_unload_pos'];
 			_box_unloaded = _box addAction ["Unload Goods","
-				params ['_box', '_player', '_box_unloaded', '_arguments'];
+				params ['_box', 'player', '_box_unloaded', '_arguments'];
 				_arguments params ['_unload_pos'];
 				[_box, _unload_pos, _box_unloaded] call PB_fnc_action_unload;
 			",_unload_pos,1,true,false,"","true",5,false,"",""];
 		};
 
-		if (isServer) then {
-			if (_count mod 2 == 0) then {
-				[hemtt_collect_1, _box, _load_pos_1, _unload_pos_1] remoteExec ["AD_fnc_createLoad", 0, true];
-				_load_pos_1 = _load_pos_1 - 1.5;
-				_unload_pos_1 = _unload_pos_1 + 0.75;
-			} else {
-				[hemtt_collect_2, _box, _load_pos_2, _unload_pos_2] remoteExec ["AD_fnc_createLoad", 0, true];
-				_load_pos_2 = _load_pos_2 - 1.5;
-				_unload_pos_2 = _unload_pos_2 + 0.75;
-			};
+		if (_count mod 2 == 0) then {
+			[hemtt_collect_1, _box, _load_pos_1, _unload_pos_1, _x] remoteExec ["AD_fnc_createLoad", 0, true];
+			_load_pos_1 = _load_pos_1 - 1.5;
+			_unload_pos_1 = _unload_pos_1 + 0.75;
+		} else {
+			[hemtt_collect_2, _box, _load_pos_2, _unload_pos_2, _x] remoteExec ["AD_fnc_createLoad", 0, true];
+			_load_pos_2 = _load_pos_2 - 1.5;
+			_unload_pos_2 = _unload_pos_2 + 0.75;
 		};
-		
+
 		//Cycle HEMTT
 		_count = _count + 1;
+		*/
 
 		//Spawn QRF
 		if (_qrf_amount < _repetitions) then {
