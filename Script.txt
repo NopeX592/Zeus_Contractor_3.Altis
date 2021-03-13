@@ -36,6 +36,7 @@ Optional:
             • Do not enter without consulting with me
             • Do not enter without CBRN Suits
         • Relocated to new FOB
+        • All intel you gather is sent back to me immediately
         • Additional assets found at aircraft carrier or FOB Alpha
         • Enemy is more reactive
             • More QRFs

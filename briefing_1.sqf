@@ -47,6 +47,7 @@ _roles = "<br/>"+
         • Orange Markings are infected areas<br/>
         • Do not enter without consulting with me<br/>
         • Do not enter without CBRN Suits<br/>
+    • All intel you gather is sent back to me immediately<br/>
     • Enemy is more reactive<br/>
         • More QRFs<br/>
 <br/>
