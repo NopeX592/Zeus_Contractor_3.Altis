@@ -12,10 +12,6 @@ Eastwind:                                                                   🡻
                                  🡺 Destroy Comms Tower 🡹
                                  🡺 Destroy Comms Tower 🡹
 
-Optional:
-    Kill Artillery
-
-
 1st Briefing:
 	General:
 		• Since your last deployment a week ago tensions rose
